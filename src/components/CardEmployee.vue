@@ -22,37 +22,36 @@ const props: CardPropsType = defineProps<{
 </script>
 
 <template class="w-full">
-    <div class="flex
-    flex-col
-    w-full
-    items-center
-    justify-center
-    mx-auto
-    
-
+    <div class="
+    section is-large
     ">
         <div class="
-        box is-floating
-        w-[90%]
-        h-fit
+        box is-raised hover-to-popping
+        is-medium
         "
         >
-        <h2>{{ eName }}</h2>
-        <p>{{ eRole }}</p>
-        <p>{{ eLocation }}</p>
-        <div v-for="(skill) in eStack">
-        <p>{{ skill }}</p>
-        </div>
-        <GenericButton
-        :text=" isToggled === false ?
-            'See more' :
-            'See less'"
-        :class="'bg-blue-200 rounded-md p-2'"
-        @click="props.onClick"
-        :toggleBtn="props.toggleBtn"
-        />
-        <p v-if="isToggled">{{ eDescription }}</p>
-        <img :src="ePicture">
+        <p class="text-3xl">{{ eName }}</p>
+        <p class="text-2xl">{{ eRole }}</p>
+        <p class="text-xl">{{ eLocation }}</p>
+        <br>
+        <div class="level">
+            <div v-for="(skill) in eStack">
+            <p>{{ skill }}</p>
+            <br>
+            </div>
+            <GenericButton
+            :text=" isToggled === false ?
+                'See more' :
+                'See less'"
+            :class="'button is-info is-light mt-3'"
+            @click="props.onClick"
+            :toggleBtn="props.toggleBtn"
+            />
+            <p v-if="isToggled">{{ eDescription }}</p>
+            <img
+            class="img is-small"
+            :src="ePicture">
+            </div>
         </div>
     </div>
 

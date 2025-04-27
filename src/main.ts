@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import './style.css';
+import '../src/assets/biings-ds/build/bds.css'
 // @ts-ignore
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
