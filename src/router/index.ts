@@ -12,8 +12,8 @@ const router = createRouter({
             component: HomeView
         },
         {
-            path: "/employees",
-            name: "employees",
+            path: "/finder",
+            name: "finder",
             component: FinderView
         },
         {
