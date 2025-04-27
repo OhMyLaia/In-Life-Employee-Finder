@@ -1,0 +1,276 @@
+{
+    "employees": [
+        {
+            "eName": "Juan Carlos Ruiz",
+            "eRole": "Scrum Master",
+            "eLocation": "Spain",
+            "eStack": [
+                "Bases de datos",
+                "Biing",
+                "Scrum Master",
+                "Product Manager",
+                "Vue",
+                "React",
+                "TypeScript",
+                "JavaScript"
+            ],
+            "eDescription": "Experienced leader and agile coach. Leads product teams to success.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Laia Martínez Lerma",
+            "eRole": "Junior Frontend Developer",
+            "eLocation": "Spain",
+            "eStack": [
+                "Vue",
+                "React",
+                "TypeScript",
+                "JavaScript",
+                "Tailwind",
+                "CSS",
+                "HTML",
+                "Figma",
+                "Vite"
+            ],
+            "eDescription": "Passionate about building responsive, dynamic, and user-friendly interfaces.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Maria González",
+            "eRole": "Senior Backend Developer",
+            "eLocation": "Mexico",
+            "eStack": [
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "AWS",
+                "Docker"
+            ],
+            "eDescription": "Expert in building scalable server-side applications.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "David Pérez",
+            "eRole": "Frontend Developer",
+            "eLocation": "Argentina",
+            "eStack": [
+                "React",
+                "JavaScript",
+                "CSS",
+                "HTML",
+                "Tailwind"
+            ],
+            "eDescription": "Focused on creating clean and scalable code for interactive applications.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Carlos Gómez",
+            "eRole": "Product Manager",
+            "eLocation": "USA",
+            "eStack": [
+                "Agile",
+                "Scrum",
+                "UX/UI Design",
+                "Market Analysis"
+            ],
+            "eDescription": "Product strategy expert with a focus on delivering user-centric products.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Emily Thompson",
+            "eRole": "Junior Designer",
+            "eLocation": "Canada",
+            "eStack": [
+                "Figma",
+                "Sketch",
+                "UI/UX Design",
+                "Illustrator"
+            ],
+            "eDescription": "Aspiring designer passionate about creating beautiful user experiences.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "John Smith",
+            "eRole": "Senior Data Scientist",
+            "eLocation": "UK",
+            "eStack": [
+                "Python",
+                "Machine Learning",
+                "Data Analysis",
+                "AI"
+            ],
+            "eDescription": "Leading data-driven decision-making for business intelligence and growth.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Sophia Johnson",
+            "eRole": "Backend Developer",
+            "eLocation": "Australia",
+            "eStack": [
+                "Node.js",
+                "Express",
+                "GraphQL",
+                "MongoDB"
+            ],
+            "eDescription": "Building efficient, reliable, and scalable backend systems.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Liam Brown",
+            "eRole": "Full Stack Developer",
+            "eLocation": "Germany",
+            "eStack": [
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express",
+                "Tailwind"
+            ],
+            "eDescription": "Bridging the gap between the frontend and backend with seamless integration.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Olivia Wilson",
+            "eRole": "Junior Product Manager",
+            "eLocation": "France",
+            "eStack": [
+                "Product Management",
+                "Scrum",
+                "User Research",
+                "Market Analysis"
+            ],
+            "eDescription": "Helping teams build products that meet market needs and user demands.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Benjamin White",
+            "eRole": "Mobile App Developer",
+            "eLocation": "Italy",
+            "eStack": [
+                "React Native",
+                "JavaScript",
+                "Node.js"
+            ],
+            "eDescription": "Focused on delivering high-performance mobile applications.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Mia Martinez",
+            "eRole": "QA Engineer",
+            "eLocation": "Spain",
+            "eStack": [
+                "Automation",
+                "Selenium",
+                "Testing",
+                "CI/CD"
+            ],
+            "eDescription": "Ensuring the highest quality of software through thorough testing processes.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Henry Davis",
+            "eRole": "Senior Designer",
+            "eLocation": "New Zealand",
+            "eStack": [
+                "UI/UX",
+                "Design Systems",
+                "Figma",
+                "Adobe XD"
+            ],
+            "eDescription": "Crafting beautiful, user-friendly designs that elevate the user experience.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Charlotte Anderson",
+            "eRole": "Marketing Specialist",
+            "eLocation": "USA",
+            "eStack": [
+                "SEO",
+                "Content Strategy",
+                "Social Media Marketing"
+            ],
+            "eDescription": "Creating impactful marketing strategies to engage users and drive growth.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "James Clark",
+            "eRole": "DevOps Engineer",
+            "eLocation": "Germany",
+            "eStack": [
+                "Docker",
+                "Kubernetes",
+                "CI/CD",
+                "AWS",
+                "Terraform"
+            ],
+            "eDescription": "Automating infrastructure and ensuring the smooth deployment of applications.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Amelia Lee",
+            "eRole": "Frontend Developer",
+            "eLocation": "Japan",
+            "eStack": [
+                "React",
+                "Vue",
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            "eDescription": "Creating responsive and interactive interfaces with modern web technologies.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Lucas Harris",
+            "eRole": "Security Engineer",
+            "eLocation": "Canada",
+            "eStack": [
+                "Security",
+                "Encryption",
+                "Penetration Testing",
+                "Firewalls"
+            ],
+            "eDescription": "Protecting systems and networks from cyber threats and vulnerabilities.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Isabella Miller",
+            "eRole": "Operations Manager",
+            "eLocation": "USA",
+            "eStack": [
+                "Operations Management",
+                "Process Optimization",
+                "Team Leadership"
+            ],
+            "eDescription": "Managing day-to-day operations for increased efficiency and productivity.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Ethan Moore",
+            "eRole": "Cloud Engineer",
+            "eLocation": "UK",
+            "eStack": [
+                "AWS",
+                "Azure",
+                "Google Cloud",
+                "Terraform",
+                "Docker"
+            ],
+            "eDescription": "Managing and optimizing cloud infrastructure for scalable applications.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Chloe King",
+            "eRole": "Junior QA Engineer",
+            "eLocation": "Spain",
+            "eStack": [
+                "Testing",
+                "Automation",
+                "CI/CD",
+                "Selenium"
+            ],
+            "eDescription": "Ensuring quality through automated tests and continuous integration.",
+            "ePicture": "/04.svg"
+        }
+    ]
+}
