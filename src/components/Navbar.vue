@@ -20,7 +20,6 @@ const isActiveLink = (routePath: string) => {
         p-2
         font-bold
         tracking-widest
-        bg-blue-200
         justify-items-start
         w-2/3
         text-black

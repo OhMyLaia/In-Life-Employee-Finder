@@ -6,6 +6,9 @@ import type { CardPropsType } from '../types';
 
 const employees = ref(EmployeeList.employees)
 
+const isToggled = ref(false)
+const toggleBtnFun = () => isToggled.value = !isToggled.value
+
 </script>
 
 <template>
@@ -18,6 +21,10 @@ const employees = ref(EmployeeList.employees)
         :eStack="employee.eStack"
         :eDescription="employee.eDescription"
         :ePicture="employee.ePicture"
+        :isToggled="isToggled"
+        text="Default Text"
+        class="default-class"
+        :onClick="toggleBtnFun"
         />
     </div>
 

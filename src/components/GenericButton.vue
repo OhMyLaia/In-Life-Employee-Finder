@@ -1,11 +1,5 @@
 <script setup lang="ts">
-
-type GenericButtonProps = {
-    text: string,
-    class: string,
-    onClick: () => void,
-    toggleBtn?: () => void
-}
+import type { GenericButtonProps } from '../types';
 
 const props: GenericButtonProps = defineProps<{
     text: string,
