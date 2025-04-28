@@ -20,14 +20,12 @@ const toggleBtnFun = () => isToggled.value = !isToggled.value
     ">
         <p
         class="
-        flex
-        justify-center
-        text-center
-        text-xl
+        text-2xl
+        md:text-5xl
         text-black
-        p-5
+        has-text-centered
         "
-        >Find an employee</p>
+        >FIND AN EMPLOYEE</p>
         <div v-for="employee in employees"
         :key="employee.eName">
             <CardEmployee

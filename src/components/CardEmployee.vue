@@ -21,38 +21,38 @@ const props: CardPropsType = defineProps<{
 
 </script>
 
-<template class="w-full">
-    <div class="
-    section is-large
-    ">
+<template>
+    <section class="
+    section is-large">
         <div class="
-        box is-raised hover-to-popping
+        box is-small
+        is-raised
+        hover-to-popping
+        has-radius-bold
         is-medium
-        "
-        >
-        <p class="text-3xl">{{ eName }}</p>
-        <p class="text-2xl">{{ eRole }}</p>
-        <p class="text-xl">{{ eLocation }}</p>
-        <br>
-        <div class="level">
-            <div v-for="(skill) in eStack">
-            <p>{{ skill }}</p>
-            <br>
+        !bg-blue-100
+        ">
+        <div class="columns is-vcentered">
+
+            <div class="column is-6">
+                <p class="text-3xl md:text-5xl">{{ eName }}</p>
+                <p class="text-2xl md:text-4xl">{{ eRole }}</p>
+                <p class="text-xl md:text-3xl">{{ eLocation }}</p>
+                <br>
+                <div class="text-xl md:text-2xl" v-for="(skill) in eStack">
+                    <p>{{ skill }}</p>
+                </div>
+                <GenericButton :text="isToggled === false ?
+                    'See more' :
+                    'See less'" :class="'button is-info mt-3'" @click="props.onClick" :toggleBtn="props.toggleBtn" />
+                <p class="text-lg md:text-2xl is-italic mt-3" v-if="isToggled">{{ eDescription }}</p>
             </div>
-            <GenericButton
-            :text=" isToggled === false ?
-                'See more' :
-                'See less'"
-            :class="'button is-info is-light mt-3'"
-            @click="props.onClick"
-            :toggleBtn="props.toggleBtn"
-            />
-            <p v-if="isToggled">{{ eDescription }}</p>
-            <img
-            class="img is-small"
-            :src="ePicture">
+            <div class="column is-6 !bg-blue-200">
+                <img class="w-full h-auto object-contain mx-auto md:w-full"
+                :src="ePicture">
             </div>
         </div>
-    </div>
+        </div>
+    </section>
 
 </template>
