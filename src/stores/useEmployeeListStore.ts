@@ -8,6 +8,9 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
     const cleanInput = (input: string) =>
     input
     .trim()
+    .replace(/\s+/g, '')
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
 
     const employees = ref<EmployeeType[]>(EmployeeList.employees.map(emp => ({
@@ -26,16 +29,19 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
     const deleteEmployee = (name: string) => {
 
         try {
-            const employeeIndex: number = employees.value.findIndex(emp => emp.name === cleanInput(name))
+            const employeeIndex: number = employees.value.findIndex(emp => cleanInput(emp.name) === cleanInput(name))
+            console.log("emp.name ->", employeeIndex)
     
             if (employeeIndex !== -1) employees.value.splice(employeeIndex, 1);
             else console.log(`could not find index`);
+            
 
         } catch (error) {
             console.log(`could not find employee, ${error}`)
         }
     }
 
+    
     const addEmployee = (newEmployee: EmployeeType) => {
         employees.value.push(newEmployee);
     }

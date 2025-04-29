@@ -50,10 +50,13 @@ function handleSubmit() {
 
 
 function deleteEmployee() {
-    if (!nameToDelete) return message.value = `Employee could not be deleted from database`;
-    employeeStore.deleteEmployee(nameToDelete.value);
+    let cleanName = employeeStore.cleanInput(nameToDelete.value)
+    if (!cleanName) return message.value = `Employee could not be deleted from database`;
+    employeeStore.deleteEmployee(cleanName);
+    console.log("Trying to delete:", cleanName);
     message.value =`Employee successfully deleted from database!`;
     nameToDelete.value = '';
+
 }
 
 </script>
