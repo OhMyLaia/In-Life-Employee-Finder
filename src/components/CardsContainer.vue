@@ -1,12 +1,25 @@
 <script setup lang="ts">
 import CardEmployee from './CardEmployee.vue';
-import { ref, reactive } from 'vue';
-import EmployeeList from "../data/employeeList.json"
-import type { CardPropsType } from '../types';
+import { computed, ref } from 'vue';
+import { roleType } from '../types';
+import type { EmployeeType } from '../types';
+import { useEmployeeStore } from '../stores/useEmployeeListStore';
 
-const employees = ref(EmployeeList.employees)
+const employeeStore = useEmployeeStore();
+const selectedRole = ref<roleType>(roleType.all)
 
-// const isToggled = ref(false)
+const filterEmployees = computed(() => {
+
+    let filteredEmployees: EmployeeType[] = []
+
+    if (selectedRole.value === "all") {
+        filteredEmployees = employeeStore.getEmployeeList
+    } else {
+        filteredEmployees = employeeStore.getEmployeeList
+        .filter(employee => employeeStore.cleanInput(employee.eRole) === selectedRole.value);
+    }
+    return filteredEmployees;
+})
 
 </script>
 
@@ -15,7 +28,6 @@ const employees = ref(EmployeeList.employees)
     flex-col
     mx-auto
     w-full
-    gap-5
     ">
         <p
         class="
@@ -25,7 +37,7 @@ const employees = ref(EmployeeList.employees)
         has-text-centered
         "
         >FIND AN EMPLOYEE</p>
-        <div v-for="employee in employees"
+        <div v-for="employee in filterEmployees"
         :key="employee.eName">
             <CardEmployee
             :eName="employee.eName"
@@ -34,11 +46,7 @@ const employees = ref(EmployeeList.employees)
             :eStack="employee.eStack"
             :eDescription="employee.eDescription"
             :ePicture="employee.ePicture"
-            text="Default Text"
-            class="default-class"
             />
         </div>
-
     </div>
-
 </template>

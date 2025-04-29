@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
 import { defineProps } from 'vue';
-import type { CardPropsType } from '../types';
+import type { CardPropsType, EmployeeType } from '../types';
 import GenericButton from './GenericButton.vue';
 import { useToggleDescriptionBtn } from '../stores/useToggleDescriptionBtn';
 
-defineProps<CardPropsType>();
+defineProps<EmployeeType>();
 
 const toggleBtnStore = useToggleDescriptionBtn();
 

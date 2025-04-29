@@ -1,5 +1,3 @@
-import type { Ref } from "vue"
-
 export type EmployeeType = {
     eName: string,
     eRole: string,
@@ -17,3 +15,10 @@ export type GenericButton = {
 }
 
 export type CardPropsType = EmployeeType & GenericButton
+
+export enum roleType {
+    all = "all",
+    fullstack = "fullstack",
+    frontend = "frontend",
+    backend = "backend"
+}

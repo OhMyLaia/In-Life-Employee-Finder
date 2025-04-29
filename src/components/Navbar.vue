@@ -38,24 +38,25 @@ const isActiveLink = (routePath: string) => {
         </div>
         <div class="
             column
-            !bg-blue-400][p]
+            !bg-blue-400]
             ">
                 <RouterLink
-                to="/"
+                to="/finder"
                 :class="[
                     isActiveLink('/finder') ?
                     'font-extrabold' :
                     ''
-                ]" >
+                    ]"
+                >
                     <span class="text-sm md:text-2xl md: m-3 text-black is-pulled-right is-vcentered">Finder</span>
                 </RouterLink>
                 <RouterLink
-                to="/finder"
+                to="/"
                 :class="[
                     isActiveLink('/') ?
                     'font-extrabold' :
                     ''
-                ]" >
+                    ]" >
                     <span class="text-sm md:text-2xl md: m-3 text-black is-pulled-right">Home</span>
                 </RouterLink>
         </div>
