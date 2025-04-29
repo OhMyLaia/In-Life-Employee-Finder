@@ -17,6 +17,8 @@ const newTechnology = ref('');
 const description = ref('');
 const nameToDelete = ref('');
 
+const message = ref('')
+
 function addStackTechnology(newTech: string) {
     stackListStore.addTech(newTech);
     newTechnology.value = '';
@@ -30,11 +32,13 @@ function handleSubmit() {
         location: location.value,
         stack: stackListStore.stack,
         description: description.value,
-        picture: ''
+        picture: '/03.svg'
     };
 
-    if (!employeeData) return alert(`Employee could not be added to database`);
-    employeeStore.addEmployee(employeeData)
+    if (!employeeData) return message.value =`Employee could not be added to database`;
+    employeeStore.addEmployee(employeeData);
+    message.value =`Employee successfully added to database!`;
+    
 
     name.value = '';
     role.value = '';
@@ -46,9 +50,10 @@ function handleSubmit() {
 
 
 function deleteEmployee() {
-    if (!nameToDelete) return alert(`Employee could not be deleted from database`);
-    employeeStore.deleteEmployee(nameToDelete.value)
-    nameToDelete.value = ''
+    if (!nameToDelete) return message.value = `Employee could not be deleted from database`;
+    employeeStore.deleteEmployee(nameToDelete.value);
+    message.value =`Employee successfully deleted from database!`;
+    nameToDelete.value = '';
 }
 
 </script>
@@ -101,6 +106,7 @@ function deleteEmployee() {
                 :text="'Submit'"
                 :class="'button is-info is-light m-4'"
                 @click="handleSubmit()" />
+                <p v-if="message" class="notification text-black mt-4">{{ message }}</p>
             </form>
         </div>
         <h3 class="
@@ -112,12 +118,12 @@ function deleteEmployee() {
             Delete employee</h3>
 
         <div class="field is-required">
-        <label for="delete-name" class="label">Name</label>
+        <label for="delete-name" class="label"></label>
         <input
             id="delete-name"
             class="input"
             type="text"
-            placeholder="Enter employee name to delete"
+            placeholder="Enter employee's full name to delete"
             v-model="nameToDelete"
         />
         </div>
