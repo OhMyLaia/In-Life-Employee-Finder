@@ -35,41 +35,6 @@ const rolesArr: roleType[] = [roleType.all, roleType.senior, roleType.mid, roleT
                 :class="buttonClass(rolesArr[index])"
                 @click="selectedRole = rolesArr[index]"/>
                 </span>
-                <!-- <GenericButton
-                :text="roleType.all"
-                :class="buttonClass(roleType.all)"
-                @click="selectedRole = roleType.all"
-                />
-                <GenericButton
-                :text="roleType.senior"
-                :class="buttonClass(roleType.senior)"
-                @click="selectedRole = roleType.senior"
-                />
-                <GenericButton
-                :text="roleType.mid"
-                :class="buttonClass(roleType.mid)"
-                @click="selectedRole = roleType.mid"
-                />
-                <GenericButton
-                :text="roleType.junior"
-                :class="buttonClass(roleType.junior)"
-                @click="selectedRole = roleType.junior"
-                />
-                <GenericButton
-                :text="roleType.fullstack"
-                :class="buttonClass(roleType.fullstack)"
-                @click="selectedRole = roleType.fullstack"
-                />
-                <GenericButton
-                :text="roleType.frontend"
-                :class="buttonClass(roleType.frontend)"
-                @click="selectedRole = roleType.frontend"
-                />
-                <GenericButton
-                :text="roleType.backend"
-                :class="buttonClass(roleType.backend)"
-                @click="selectedRole = roleType.backend"
-                /> -->
             </div>
             <div>
 

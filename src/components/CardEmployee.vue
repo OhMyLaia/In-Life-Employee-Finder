@@ -16,7 +16,7 @@ const toggleBtnStore = useToggleDescriptionBtn();
     class="
     section
     ">
-    <container>
+    <div class="container">
         <div class="
         box is-small
         is-raised
@@ -56,6 +56,6 @@ const toggleBtnStore = useToggleDescriptionBtn();
                 </div>
                 </div>
             </div>
-        </container>
+        </div>
     </section>
 </template>
