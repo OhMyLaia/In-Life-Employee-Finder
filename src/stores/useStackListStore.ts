@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 
-export const useStackListStore = defineStore('employeeStore', () => {
+export const useStackListStore = defineStore('stackListStore', () => {
 
     const stack = ref<string[]>([])
 
@@ -11,9 +11,12 @@ export const useStackListStore = defineStore('employeeStore', () => {
         stack.value.push(newTech);
     }
 
+    const clearStack = () => stack.value = []
+
     return {
         stack,
         getStackList,
-        addTech
+        addTech,
+        clearStack
     }
 })
