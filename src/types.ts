@@ -22,3 +22,7 @@ export enum roleType {
     frontend = "frontend",
     backend = "backend"
 }
+
+export type CardsContainerPropsType = {
+    filterByRole: roleType;
+}

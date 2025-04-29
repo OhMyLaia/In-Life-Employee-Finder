@@ -2,11 +2,12 @@
 import CardEmployee from './CardEmployee.vue';
 import { computed, ref } from 'vue';
 import { roleType } from '../types';
-import type { EmployeeType } from '../types';
+import type { EmployeeType, CardsContainerPropsType } from '../types';
 import { useEmployeeStore } from '../stores/useEmployeeListStore';
 
 const employeeStore = useEmployeeStore();
-const selectedRole = ref<roleType>(roleType.all)
+const selectedRole = ref<roleType>(roleType.all);
+defineProps<CardsContainerPropsType>();
 
 const filterEmployees = computed(() => {
 
@@ -29,14 +30,6 @@ const filterEmployees = computed(() => {
     mx-auto
     w-full
     ">
-        <p
-        class="
-        text-2xl
-        md:text-5xl
-        text-black
-        has-text-centered
-        "
-        >FIND AN EMPLOYEE</p>
         <div v-for="employee in filterEmployees"
         :key="employee.eName">
             <CardEmployee

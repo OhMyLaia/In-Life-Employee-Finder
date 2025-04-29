@@ -20,6 +20,8 @@ const toggleBtnStore = useToggleDescriptionBtn();
         hover-to-popping
         has-radius-bold
         is-medium
+        is-gapless
+        is-marginless
         !bg-blue-100
         ">
         <div class="columns is-vcentered">
