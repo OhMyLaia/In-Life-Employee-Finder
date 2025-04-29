@@ -33,7 +33,7 @@ function toggleDescription() {
         ">
         <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ name }}</h3>
         <p class="is-size-4-mobile is-size-3-tablet">{{ role }}</p>
-        <p class="is-size-5-mobile is-size-4-tablet">{{location }}</p>
+        <p class="is-size-5-mobile is-size-4-tablet mb-5">{{location }}</p>
             <div class="columns is-vcentered">
                 <div class="column is-6">
                     <br>
