@@ -1,20 +1,19 @@
 import type { Ref } from "vue"
 
-export type CardType = {
+export type EmployeeType = {
     eName: string,
     eRole: string,
     eLocation: string,
-    eStack: [],
+    eStack: string[],
     eDescription: string
     ePicture: string
-    isToggled: Ref<boolean, boolean>
+
 }
 
 export type GenericButton = {
     text: string,
     class: string,
-    onClick: () => void,
-    toggleBtn?: () => void
+    onClickFunction?: () => void
 }
 
-export type CardPropsType = CardType & GenericButton
+export type CardPropsType = EmployeeType & GenericButton

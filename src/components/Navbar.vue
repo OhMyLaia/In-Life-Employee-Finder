@@ -9,20 +9,18 @@ const isActiveLink = (routePath: string) => {
 </script>
 
 <template>
-    <div class="flex
-    w-full
-    items-center-safe
+    <nav class="
+    columns
     bg-blue-200">
         <div class="
-        flex
-        flex-col
+        column
         text-xl
-        p-2
+        md:text-5xl
         font-bold
         tracking-widest
-        justify-items-start
-        w-2/3
         text-black
+        ml-4
+        mt-3
         ">
         IN LIFE PROJECTS
             <div class="
@@ -39,33 +37,27 @@ const isActiveLink = (routePath: string) => {
             </div>
         </div>
         <div class="
-            flex
-            flex-row
-            text-md
-            items-center-safe
-            justify-between
-            align-middle
-            text-left
-            w-1/3
-            m-5">
+            column
+            !bg-blue-400][p]
+            ">
                 <RouterLink
                 to="/"
-                :class="[
-                    isActiveLink('/') ?
-                    'font-extrabold' :
-                    ''
-                ]" >
-                    <span class="text-sm m-3 text-black">Home</span>
-                </RouterLink>
-                <RouterLink
-                to="/finder"
                 :class="[
                     isActiveLink('/finder') ?
                     'font-extrabold' :
                     ''
                 ]" >
-                    <span class="text-sm m-3 text-black">Finder</span>
+                    <span class="text-sm md:text-2xl md: m-3 text-black is-pulled-right is-vcentered">Finder</span>
+                </RouterLink>
+                <RouterLink
+                to="/finder"
+                :class="[
+                    isActiveLink('/') ?
+                    'font-extrabold' :
+                    ''
+                ]" >
+                    <span class="text-sm md:text-2xl md: m-3 text-black is-pulled-right">Home</span>
                 </RouterLink>
         </div>
-    </div>
+    </nav>
 </template>
