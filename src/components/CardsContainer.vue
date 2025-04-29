@@ -18,7 +18,7 @@ const filterEmployees = computed(() => {
     } else {
         filteredEmployees = employeeStore.getEmployeeList
         .filter(employee => employeeStore
-        .cleanInput(employee.eRole)
+        .cleanInput(employee.role)
         .includes(props.filterByRole ?? ''));
     }
     return filteredEmployees;
@@ -36,14 +36,14 @@ const filterEmployees = computed(() => {
         is-full-mobile
         is-half-tablet"
         v-for="employee in filterEmployees"
-            :key="employee.eName">
+            :key="employee.name">
                 <CardEmployee
-                :eName="employee.eName"
-                :eRole="employee.eRole"
-                :eLocation="employee.eLocation"
-                :eStack="employee.eStack"
-                :eDescription="employee.eDescription"
-                :ePicture="employee.ePicture"
+                :name="employee.name"
+                :role="employee.role"
+                :location="employee.location"
+                :stack="employee.stack"
+                :description="employee.description"
+                :picture="employee.picture"
                 />
         </div>
     </div>

@@ -10,7 +10,14 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
     .trim()
     .toLowerCase()
 
-    const employees = ref<EmployeeType[]>(EmployeeList.employees);
+    const employees = ref<EmployeeType[]>(EmployeeList.employees.map(emp => ({
+        name: emp.eName,
+        role: emp.eRole,
+        location: emp.eLocation,
+        stack: emp.eStack,
+        description: emp.eDescription,
+        picture: emp.ePicture
+    })));
 
     const getEmployeeList = computed(() => employees.value)
 
@@ -19,7 +26,7 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
     const deleteEmployee = (name: string) => {
 
         try {
-            const employeeIndex: number = employees.value.findIndex(emp => emp.eName === cleanInput(name))
+            const employeeIndex: number = employees.value.findIndex(emp => emp.name === cleanInput(name))
     
             if (employeeIndex !== -1) employees.value.splice(employeeIndex, 1);
             else console.log(`could not find index`);
@@ -35,10 +42,10 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
 
     const updateEmployee = (newData: EmployeeType) => {
         
-        const name = newData.eName;
+        const name = newData.name;
 
         try {
-            const employeeIndex: number = employees.value.findIndex(emp => emp.eName === cleanInput(name));
+            const employeeIndex: number = employees.value.findIndex(emp => emp.name === cleanInput(name));
     
             if (employeeIndex !== -1) employees.value[employeeIndex] = newData;
             else console.log(`could not find index`);

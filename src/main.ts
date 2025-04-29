@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
 import { createPinia } from 'pinia';
+import { createApp } from 'vue'
 import './style.css';
 import '../src/assets/biings-ds/build/bds.css'
 // @ts-ignore

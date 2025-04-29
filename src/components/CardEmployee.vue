@@ -27,14 +27,14 @@ const toggleBtnStore = useToggleDescriptionBtn();
         is-marginless
         !bg-blue-100
         ">
-        <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ eName }}</h3>
-        <p class="is-size-4-mobile is-size-3-tablet">{{ eRole }}</p>
-        <p class="is-size-5-mobile is-size-4-tablet">{{ eLocation }}</p>
+        <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ name }}</h3>
+        <p class="is-size-4-mobile is-size-3-tablet">{{ role }}</p>
+        <p class="is-size-5-mobile is-size-4-tablet">{{location }}</p>
             <div class="columns is-vcentered">
                 <div class="column is-6">
                     <br>
                     <div class="is-size-5-mobile is-size-4-tablet"
-                    v-for="(skill) in eStack">
+                    v-for="(skill) in stack">
                         <p>{{ skill }}</p>
                     </div>
                     <GenericButton
@@ -48,11 +48,11 @@ const toggleBtnStore = useToggleDescriptionBtn();
                         is-italic
                         mt-3"
                         v-if="toggleBtnStore.toggleBtnValue() === true">
-                        {{ eDescription }}</p>
+                        {{ description }}</p>
                 </div>
                 <div class="column is-6 !bg-blue-200">
                     <img class=""
-                    :src="ePicture">
+                    :src="picture">
                 </div>
                 </div>
             </div>

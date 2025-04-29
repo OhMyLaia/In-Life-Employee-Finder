@@ -1,10 +1,10 @@
 export type EmployeeType = {
-    eName: string,
-    eRole: string,
-    eLocation: string,
-    eStack: string[],
-    eDescription: string
-    ePicture: string
+    name: string,
+    role: string,
+    location: string,
+    stack: string[],
+    description: string
+    picture: string
 
 }
 
