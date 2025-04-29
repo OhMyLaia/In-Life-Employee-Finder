@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import type { Ref } from 'vue';
 // store de tech para añadir al array
 import { useStackListStore } from '../stores/useStackListStore';
 // store de data.json
@@ -19,10 +20,11 @@ const nameToDelete = ref('');
 
 const message = ref('')
 
-function addStackTechnology(newTech: string) {
-    stackListStore.addTech(newTech);
-    newTechnology.value = '';
-}
+// function addStackTechnology(newTech: Ref<string> | null) {
+//     if (!newTech) return null
+//     stackListStore.addTech(newTech.value);
+//     newTechnology.value = '';
+// }
 
 function handleSubmit() {
 
@@ -30,7 +32,7 @@ function handleSubmit() {
         name: name.value,
         role: role.value,
         location: location.value,
-        stack: stackListStore.stack,
+        stack: [],
         description: description.value,
         picture: '/03.svg'
     };
@@ -86,29 +88,28 @@ function deleteEmployee() {
                 </div>
 
                 <div class="has-text-left">
-                    <div class="field is-required">
+                    <!-- <div class="field is-required">
                         <label for="stack" class="label">Technology</label>
                         <input id="stack" class="input" v-model="newTechnology" type="text"
                             placeholder="Enter their stack (Vue, React, Node...)" />
-                    </div>
-                    <div class="control has-text-centered">
-                        <button type="button" @click="() => addStackTechnology(newTechnology)"
+                    </div> -->
+                    <!-- <div class="control has-text-centered">
+                        <button type="button" @click="() => addStackTechnology(newTechnology | null)"
                             class="button is-info is-light mb-4">
                             Add tech to stack
                         </button>
-                    </div>
-                </div>
-
-                <div class="field is-required">
-                    <label for="textfield" class="label"></label>
-                    <textarea id="textfield" class="textarea" placeholder="Description"
+                    </div> -->
+    
+                    <div class="field is-required">
+                        <label for="textfield" class="label"></label>
+                        <textarea id="textfield" class="textarea" placeholder="Description"
                         v-model="description"></textarea>
+                    </div>
                 </div>
                 <GenericButton
                 type="submit"
                 :text="'Submit'"
-                :class="'button is-info is-light m-4'"
-                @click="handleSubmit()" />
+                :class="'button is-info is-light m-4'"/>
                 <p v-if="message" class="notification text-black mt-4">{{ message }}</p>
             </form>
         </div>
