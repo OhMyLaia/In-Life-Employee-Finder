@@ -25,21 +25,24 @@ const filterEmployees = computed(() => {
 </script>
 
 <template>
-    <div class="flex
-    flex-col
-    mx-auto
-    w-full
+    <div class="
+    columns
+    is-multiline
     ">
-        <div v-for="employee in filterEmployees"
-        :key="employee.eName">
-            <CardEmployee
-            :eName="employee.eName"
-            :eRole="employee.eRole"
-            :eLocation="employee.eLocation"
-            :eStack="employee.eStack"
-            :eDescription="employee.eDescription"
-            :ePicture="employee.ePicture"
-            />
+        <div class="
+        column
+        is-full-mobile
+        is-one-third-tablet"
+        v-for="employee in filterEmployees"
+            :key="employee.eName">
+                <CardEmployee
+                :eName="employee.eName"
+                :eRole="employee.eRole"
+                :eLocation="employee.eLocation"
+                :eStack="employee.eStack"
+                :eDescription="employee.eDescription"
+                :ePicture="employee.ePicture"
+                />
         </div>
     </div>
 </template>

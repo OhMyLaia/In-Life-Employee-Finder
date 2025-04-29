@@ -8,12 +8,13 @@ const isActiveLink = (routePath: string) => {
 
 </script>
 
-<template>
+<!-- <template>
     <nav class="
-    columns
-    bg-blue-200">
+    columns is-vcentered is-mobile bg-blue-200 px-4 py-2
+    ">
         <div class="
         column
+        is-two-thirds
         text-xl
         md:text-5xl
         font-bold
@@ -24,10 +25,8 @@ const isActiveLink = (routePath: string) => {
         ">
         IN LIFE PROJECTS
             <div class="
-            flex
-            flex-col
+            is-two-thirds
             text-start
-            w-2/3
             bg-blue-200
             text-md
             font-light
@@ -36,29 +35,62 @@ const isActiveLink = (routePath: string) => {
             IT Solutions
             </div>
         </div>
-        <div class="
-            column
-            !bg-blue-400]
-            ">
-                <RouterLink
-                to="/finder"
-                :class="[
-                    isActiveLink('/finder') ?
-                    'font-extrabold' :
-                    ''
-                    ]"
-                >
-                    <span class="text-sm md:text-2xl md: m-3 text-black is-pulled-right is-vcentered">Finder</span>
-                </RouterLink>
-                <RouterLink
-                to="/"
-                :class="[
-                    isActiveLink('/') ?
-                    'font-extrabold' :
-                    ''
-                    ]" >
-                    <span class="text-sm md:text-2xl md: m-3 text-black is-pulled-right">Home</span>
-                </RouterLink>
+        <span class="column is-mobile">
+            <RouterLink
+            to="/finder"
+            :class="[
+                isActiveLink('/finder') ?
+                'font-extrabold hover:underline' :
+                ''
+                ]"
+            >
+                <span class="text-sm md:text-2xl m-3 text-black is-pulled-right is-vcentered">Finder</span>
+            </RouterLink>
+            <RouterLink
+            to="/"
+            :class="[
+                isActiveLink('/') ?
+                'font-extrabold hover:underline' :
+                ''
+                ]" >
+                <span class="text-sm md:text-2xl m-3 text-black is-pulled-right">Home</span>
+            </RouterLink>
+        </span>
+    </nav>
+</template> -->
+
+<template>
+    <nav class="columns is-vcentered is-mobile bg-blue-200 p-3">
+        <!-- Left: Logo -->
+        <div class="column">
+            <h1 class=" is-size-2 has-text-black">IN LIFE PROJECTS</h1>
+            <p class="subtitle is-3 has-text-black">IT Solutions</p>
+        </div>
+
+        <!-- Right: Navigation -->
+        <div class="column is-narrow has-text-right">
+            <RouterLink
+            to="/"
+            :class="[
+                isActiveLink('/') ?
+                'has-text-weight-bold has-text-black'
+                :
+                'has-text-black',
+            ]"
+            class="ml-5">
+                <span class="is-size-4">Home</span>
+            </RouterLink>
+            <RouterLink
+            to="/finder"
+            :class="[
+                isActiveLink('/finder') ?
+                'has-text-weight-bold has-text-black'
+                :
+                'has-text-black',
+            ]"
+            class="ml-5">
+                <span class="is-size-4">Finder</span>
+            </RouterLink>
         </div>
     </nav>
 </template>

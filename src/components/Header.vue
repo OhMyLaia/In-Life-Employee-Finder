@@ -12,6 +12,7 @@ import banner from "/01.svg"
             font-bold
             text-2xl
             flex
+            text-black
             ">
                 IN LIFE TALENT FINDER</p>
             <p class="

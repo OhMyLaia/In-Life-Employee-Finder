@@ -12,8 +12,11 @@ const toggleBtnStore = useToggleDescriptionBtn();
 </script>
 
 <template>
-    <section class="
-    section is-large">
+    <section
+    class="
+    section
+    is-large">
+    <container>
         <div class="
         box is-small
         is-raised
@@ -24,38 +27,40 @@ const toggleBtnStore = useToggleDescriptionBtn();
         is-marginless
         !bg-blue-100
         ">
-        <div class="columns is-vcentered">
-            <div class="column is-6">
-                <p class="text-3xl md:text-5xl">{{ eName }}</p>
-                <p class="text-2xl md:text-4xl">{{ eRole }}</p>
-                <p class="text-xl md:text-3xl">{{ eLocation }}</p>
-                <br>
-                <div class="text-xl md:text-2xl"
-                v-for="(skill) in eStack">
-                    <p>{{ skill }}</p>
+            <div class="columns is-vcentered">
+                <div class="column is-6">
+                    <p class="text-3xl md:text-5xl">{{ eName }}</p>
+                    <p class="text-2xl md:text-4xl">{{ eRole }}</p>
+                    <p class="text-xl md:text-3xl">{{ eLocation }}</p>
+                    <br>
+                    <div class="text-xl md:text-2xl"
+                    v-for="(skill) in eStack">
+                        <p>{{ skill }}</p>
+                    </div>
+                    <GenericButton
+                    :text="toggleBtnStore.toggleBtnValue() === false ?
+                        'See more' :
+                        'See less'"
+                        :class="'button is-info mt-3'"
+                        @click="toggleBtnStore.toggleBtnFun"/>
+                    <p class="text-lg
+                        md:text-2xl
+                        is-italic
+                        mt-3"
+                        v-if="toggleBtnStore.toggleBtnValue() === true">
+                        {{ eDescription }}</p>
                 </div>
-                <GenericButton
-                :text="toggleBtnStore.toggleBtnValue() === false ?
-                    'See more' :
-                    'See less'"
-                    :class="'button is-info mt-3'"
-                    @click="toggleBtnStore.toggleBtnFun"/>
-                <p class="text-lg
-                    md:text-2xl
-                    is-italic
-                    mt-3"
-                    v-if="toggleBtnStore.toggleBtnValue() === true">
-                    {{ eDescription }}</p>
+                <div class="column is-6 !bg-blue-200">
+                    <img class="w-full
+                        h-auto
+                        object-contain
+                        mx-auto
+                        md:w-full"
+                    :src="ePicture">
+                </div>
+                </div>
             </div>
-            <div class="column is-6 !bg-blue-200">
-                <img class="w-full
-                    h-auto
-                    object-contain
-                    mx-auto
-                    md:w-full"
-                :src="ePicture">
-            </div>
-        </div>
-        </div>
+        </container>
     </section>
 </template>
+
