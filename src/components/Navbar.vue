@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router';
+import GenericSvg from './GenericSvg.vue';
+// import icons from "../../src/assets/biings-ds/build/bds-icons.min.svg#line-compact-g"
 
 const isActiveLink = (routePath: string) => {
     const route = useRoute();
@@ -8,109 +10,83 @@ const isActiveLink = (routePath: string) => {
 
 </script>
 
-<!-- <template>
-    <nav class="
-    columns is-vcentered is-mobile bg-blue-200 px-4 py-2
-    ">
-        <div class="
-        column
-        is-two-thirds
-        text-xl
-        md:text-5xl
-        font-bold
-        tracking-widest
-        text-black
-        ml-4
-        mt-3
-        ">
-        IN LIFE PROJECTS
-            <div class="
-            is-two-thirds
-            text-start
-            bg-blue-200
-            text-md
-            font-light
-            text-black
-            ">
-            IT Solutions
-            </div>
-        </div>
-        <span class="column is-mobile">
-            <RouterLink
-            to="/finder"
-            :class="[
-                isActiveLink('/finder') ?
-                'font-extrabold hover:underline' :
-                ''
-                ]"
-            >
-                <span class="text-sm md:text-2xl m-3 text-black is-pulled-right is-vcentered">Finder</span>
-            </RouterLink>
-            <RouterLink
-            to="/"
-            :class="[
-                isActiveLink('/') ?
-                'font-extrabold hover:underline' :
-                ''
-                ]" >
-                <span class="text-sm md:text-2xl m-3 text-black is-pulled-right">Home</span>
-            </RouterLink>
-        </span>
-    </nav>
-</template> -->
-
 <template>
 
     <nav class="columns is-vcentered is-mobile is-variable bg-blue-200 p-3 is-full">
-        <!-- Left: Logo -->
         <div class="column">
-            <h1
-            class="is-size-4-mobile
+            <h1 class="is-size-4-mobile
             is-size-2-tablet
             has-text-black
             has-text-weight-bold
-            "
-            >IN LIFE PROJECTS</h1>
+            ">IN LIFE PROJECTS</h1>
             <p class="subtitle is-size-5-mobile is-size-2-tablet has-text-black">IT Solutions</p>
         </div>
 
-        <!-- Right: Navigation -->
-        <div class="
-        column
-        is-narrow
-        has-text-right">
-            <RouterLink
-            to="/"
-            :class="[
-                isActiveLink('/') ?
-                'has-text-weight-bold has-text-black'
-                :
-                'has-text-black',
-            ]"
-            class="ml-5">
-                <span
-                class="
+        <div class="dropdown is-hoverable mr-10">
+            <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>
+                        <GenericSvg icon="line-compact-g" src="/bds-icons.min.svg" />
+                    </span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="dropdown-menu open-left" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                    <RouterLink to="/" :class="[
+                        isActiveLink('/') ?
+                            'has-text-weight-bold has-text-black'
+                            :
+                            'has-text-black',
+                    ]" class="dropdown-item ml-5">
+                        <span class="
                 is-size-6-mobile
                 is-size-3-tablet
                 ">
-                Home</span>
-            </RouterLink>
-            <RouterLink
-            to="/finder"
-            :class="[
-                isActiveLink('/finder') ?
-                'has-text-weight-bold has-text-black'
-                :
-                'has-text-black',
-            ]"
-            class="ml-5">
-                <span
-                class="
+                            Home</span>
+                    </RouterLink>
+                    <RouterLink to="/finder" :class="[
+                        isActiveLink('/finder') ?
+                            'has-text-weight-bold has-text-black'
+                            :
+                            'has-text-black',
+                    ]" class="dropdown-item ml-5">
+                        <span class="
                 is-size-6-mobile
                 is-size-3-tablet
                 ">
-                Finder</span>
-            </RouterLink>
+                            Finder</span>
+                    </RouterLink>
+                    <RouterLink to="/management" :class="[
+                        isActiveLink('/management') ?
+                            'has-text-weight-bold has-text-black'
+                            :
+                            'has-text-black',
+                    ]" class="dropdown-item ml-5">
+                        <span class="
+                is-size-6-mobile
+                is-size-3-tablet
+                ">
+                            Staff-manager</span>
+                    </RouterLink>
+
+                </div>
+            </div>
         </div>
+
+
+
+
+
     </nav>
 </template>
+
+<style lang="css" scoped>
+.dropdown-menu.open-left {
+    left: auto;
+    right: 0;
+    transform-origin: top right;
+}
+</style>
