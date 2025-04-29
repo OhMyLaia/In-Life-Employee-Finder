@@ -17,7 +17,11 @@ const router = createRouter({
             name: "finder",
             component: FinderView
         },
-
+        {
+            path: "/staff-manager",
+            name: "staff-manager",
+            component: ManagerView
+        },
         {
             path: "/:catchAll(.*)",
             name: "not-found",

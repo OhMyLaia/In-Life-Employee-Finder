@@ -59,8 +59,8 @@ const isActiveLink = (routePath: string) => {
                 ">
                             Finder</span>
                     </RouterLink>
-                    <RouterLink to="/management" :class="[
-                        isActiveLink('/management') ?
+                    <RouterLink to="/staff-manager" :class="[
+                        isActiveLink('/staff-manager') ?
                             'has-text-weight-bold has-text-black'
                             :
                             'has-text-black',

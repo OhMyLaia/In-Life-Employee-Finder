@@ -31,7 +31,17 @@ const isActiveBtn = (routePath: string) => {
                 @click="console.log(`going to finder`)"
                 />
             </RouterLink>
+            <div class="has-text-centered">
+            <RouterLink
+            to="/staff-manager">
+                <GenericButton
+                :text="'Manage staff data'"
+                :class="'button text-is-black mt-5 is-size-3-tablet'"
+                @click="console.log(`going to staff-manager`)"
+                />
+            </RouterLink>
         </div>
         <CardsContainer/>
+    </div>
     </div>
 </template>
