@@ -60,15 +60,25 @@ const isActiveLink = (routePath: string) => {
 </template> -->
 
 <template>
-    <nav class="columns is-vcentered is-mobile bg-blue-200 p-3">
+
+    <nav class="columns is-vcentered is-mobile is-variable bg-blue-200 p-3 is-full">
         <!-- Left: Logo -->
         <div class="column">
-            <h1 class=" is-size-2 has-text-black">IN LIFE PROJECTS</h1>
-            <p class="subtitle is-3 has-text-black">IT Solutions</p>
+            <h1
+            class="is-size-4-mobile
+            is-size-2-tablet
+            has-text-black
+            has-text-weight-bold
+            "
+            >IN LIFE PROJECTS</h1>
+            <p class="subtitle is-size-5-mobile is-size-2-tablet has-text-black">IT Solutions</p>
         </div>
 
         <!-- Right: Navigation -->
-        <div class="column is-narrow has-text-right">
+        <div class="
+        column
+        is-narrow
+        has-text-right">
             <RouterLink
             to="/"
             :class="[
@@ -78,7 +88,12 @@ const isActiveLink = (routePath: string) => {
                 'has-text-black',
             ]"
             class="ml-5">
-                <span class="is-size-4">Home</span>
+                <span
+                class="
+                is-size-6-mobile
+                is-size-3-tablet
+                ">
+                Home</span>
             </RouterLink>
             <RouterLink
             to="/finder"
@@ -89,7 +104,12 @@ const isActiveLink = (routePath: string) => {
                 'has-text-black',
             ]"
             class="ml-5">
-                <span class="is-size-4">Finder</span>
+                <span
+                class="
+                is-size-6-mobile
+                is-size-3-tablet
+                ">
+                Finder</span>
             </RouterLink>
         </div>
     </nav>

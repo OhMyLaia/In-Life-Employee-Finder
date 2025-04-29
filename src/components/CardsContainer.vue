@@ -6,18 +6,20 @@ import type { EmployeeType, CardsContainerPropsType } from '../types';
 import { useEmployeeStore } from '../stores/useEmployeeListStore';
 
 const employeeStore = useEmployeeStore();
-const selectedRole = ref<roleType>(roleType.all);
-defineProps<CardsContainerPropsType>();
+// const selectedRole = ref<roleType>(roleType.all);
+const props = defineProps<CardsContainerPropsType>();
 
 const filterEmployees = computed(() => {
 
     let filteredEmployees: EmployeeType[] = []
 
-    if (selectedRole.value === "all") {
+    if (props.filterByRole === "all") {
         filteredEmployees = employeeStore.getEmployeeList
     } else {
         filteredEmployees = employeeStore.getEmployeeList
-        .filter(employee => employeeStore.cleanInput(employee.eRole) === selectedRole.value);
+        .filter(employee => employeeStore
+        .cleanInput(employee.eRole)
+        .includes(props.filterByRole ?? ''));
     }
     return filteredEmployees;
 })
@@ -32,7 +34,7 @@ const filterEmployees = computed(() => {
         <div class="
         column
         is-full-mobile
-        is-one-third-tablet"
+        is-half-tablet"
         v-for="employee in filterEmployees"
             :key="employee.eName">
                 <CardEmployee

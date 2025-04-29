@@ -18,11 +18,16 @@ export type CardPropsType = EmployeeType & GenericButton
 
 export enum roleType {
     all = "all",
+    senior = "senior",
+    mid = "mid",
+    junior = "junior",
     fullstack = "fullstack",
     frontend = "frontend",
-    backend = "backend"
+    backend = "backend",
+    designer = "designer",
+    manager = "manager"
 }
 
 export type CardsContainerPropsType = {
-    filterByRole: roleType;
+    filterByRole?: roleType;
 }

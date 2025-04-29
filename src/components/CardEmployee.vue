@@ -15,7 +15,7 @@ const toggleBtnStore = useToggleDescriptionBtn();
     <section
     class="
     section
-    is-large">
+    ">
     <container>
         <div class="
         box is-small
@@ -27,13 +27,13 @@ const toggleBtnStore = useToggleDescriptionBtn();
         is-marginless
         !bg-blue-100
         ">
+        <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ eName }}</h3>
+        <p class="is-size-4-mobile is-size-3-tablet">{{ eRole }}</p>
+        <p class="is-size-5-mobile is-size-4-tablet">{{ eLocation }}</p>
             <div class="columns is-vcentered">
                 <div class="column is-6">
-                    <p class="text-3xl md:text-5xl">{{ eName }}</p>
-                    <p class="text-2xl md:text-4xl">{{ eRole }}</p>
-                    <p class="text-xl md:text-3xl">{{ eLocation }}</p>
                     <br>
-                    <div class="text-xl md:text-2xl"
+                    <div class="is-size-5-mobile is-size-4-tablet"
                     v-for="(skill) in eStack">
                         <p>{{ skill }}</p>
                     </div>
@@ -51,11 +51,7 @@ const toggleBtnStore = useToggleDescriptionBtn();
                         {{ eDescription }}</p>
                 </div>
                 <div class="column is-6 !bg-blue-200">
-                    <img class="w-full
-                        h-auto
-                        object-contain
-                        mx-auto
-                        md:w-full"
+                    <img class=""
                     :src="ePicture">
                 </div>
                 </div>
@@ -63,4 +59,3 @@ const toggleBtnStore = useToggleDescriptionBtn();
         </container>
     </section>
 </template>
-

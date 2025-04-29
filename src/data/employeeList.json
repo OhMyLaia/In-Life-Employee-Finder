@@ -37,7 +37,7 @@
         },
         {
             "eName": "Maria González",
-            "eRole": "Senior Backend Developer",
+            "eRole": "Mid Backend Developer",
             "eLocation": "Mexico",
             "eStack": [
                 "Node.js",
@@ -91,7 +91,7 @@
         },
         {
             "eName": "John Smith",
-            "eRole": "Senior Data Scientist",
+            "eRole": "Mid-Senior Data Scientist",
             "eLocation": "UK",
             "eStack": [
                 "Python",
@@ -271,6 +271,48 @@
             ],
             "eDescription": "Ensuring quality through automated tests and continuous integration.",
             "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Alex Chen",
+            "eRole": "Fullstack Developer",
+            "eLocation": "United States",
+            "eStack": [
+                "JavaScript",
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express"
+            ],
+            "eDescription": "Passionate about building seamless applications from frontend to backend.",
+            "ePicture": "/03.svg"
+        },
+        {
+            "eName": "Priya Patel",
+            "eRole": "Fullstack Developer",
+            "eLocation": "India",
+            "eStack": [
+                "TypeScript",
+                "Angular",
+                "Python",
+                "Django",
+                "PostgreSQL"
+            ],
+            "eDescription": "Loves solving complex problems with elegant fullstack solutions.",
+            "ePicture": "/04.svg"
+        },
+        {
+            "eName": "Marcus Johnson",
+            "eRole": "Fullstack Developer",
+            "eLocation": "Germany",
+            "eStack": [
+                "Java",
+                "Spring Boot",
+                "Vue.js",
+                "MySQL",
+                "Docker"
+            ],
+            "eDescription": "Specializes in building scalable enterprise applications with modern tech stacks.",
+            "ePicture": "/03.svg"
         }
     ]
 }

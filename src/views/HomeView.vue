@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue';
 import CardsContainer from '../components/CardsContainer.vue';
-import { roleType } from '../types';
 </script>
 
 <template>
@@ -16,7 +15,6 @@ import { roleType } from '../types';
         has-text-centered
         "
         >FIND AN EMPLOYEE</p>
-        <CardsContainer
-        :filterByRole="roleType.all"/>
+        <CardsContainer/>
     </div>
 </template>
