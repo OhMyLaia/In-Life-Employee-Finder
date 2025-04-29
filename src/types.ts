@@ -8,13 +8,14 @@ export type EmployeeType = {
 
 }
 
-export type GenericButton = {
+export type GenericButtonType = {
     text: string,
     class: string,
-    onClickFunction?: () => void
+    onClick?: () => void,
+    toggleBtn?: () => void
 }
 
-export type CardPropsType = EmployeeType & GenericButton
+export type CardPropsType = EmployeeType & GenericButtonType
 
 export enum roleType {
     all = "all",

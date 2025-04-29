@@ -32,7 +32,7 @@ const rolesArr: roleType[] = [roleType.all, roleType.senior, roleType.mid, roleT
             has-text-centered
                 ">
                 <span v-for="(role, index) in rolesArr"
-                :key="index">
+                :key="`${role}-${index}`">
                 <GenericButton
                 :text="rolesArr[index]"
                 :class="buttonClass(rolesArr[index])"

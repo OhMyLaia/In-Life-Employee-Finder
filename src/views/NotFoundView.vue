@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import GenericSvg from '../components/GenericSvg.vue';
 import GenericButton from '../components/GenericButton.vue';
 import notFoundSvg from "/notFound.svg"
 </script>

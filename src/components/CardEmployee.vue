@@ -1,13 +1,17 @@
 <script setup lang="ts">
 
 import { defineProps } from 'vue';
-import type { CardPropsType, EmployeeType } from '../types';
+import type { EmployeeType } from '../types';
 import GenericButton from './GenericButton.vue';
-import { useToggleDescriptionBtn } from '../stores/useToggleDescriptionBtn';
+import { ref } from 'vue';
 
 defineProps<EmployeeType>();
 
-const toggleBtnStore = useToggleDescriptionBtn();
+const showDescription = ref(false);
+
+function toggleDescription() {
+    showDescription.value = !showDescription.value;
+}
 
 </script>
 
@@ -38,16 +42,16 @@ const toggleBtnStore = useToggleDescriptionBtn();
                         <p>{{ skill }}</p>
                     </div>
                     <GenericButton
-                    :text="toggleBtnStore.toggleBtnValue() === false ?
+                    :text="showDescription === false ?
                         'See more' :
                         'See less'"
                         :class="'button is-info mt-3'"
-                        @click="toggleBtnStore.toggleBtnFun"/>
+                        @click="toggleDescription"/>
                     <p class="text-lg
                         md:text-2xl
                         is-italic
                         mt-3"
-                        v-if="toggleBtnStore.toggleBtnValue() === true">
+                        v-if="showDescription === true">
                         {{ description }}</p>
                 </div>
                 <div class="column is-6 !bg-blue-200">

@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import type { GenericButtonProps } from '../types';
+import type { GenericButtonType } from '../types'; 
 
-const props: GenericButtonProps = defineProps<{
-    text: string,
-    class: string,
-    onClick: () => void,
-    toggleBtn?: () => void
-}>()
+const props = defineProps<GenericButtonType>();
 
 </script>
 
@@ -14,7 +9,7 @@ const props: GenericButtonProps = defineProps<{
 <template>
     <button
     :class="props.class"
-    @click="props.onClick"
-    :toggleBtn="props.toggleBtn"
-    >{{ props.text }}</button>
+    @click="onClick"
+    :toggleBtn="toggleBtn"
+    >{{ text }}</button>
 </template>

@@ -2,12 +2,7 @@
 import Header from '@/components/Header.vue';
 import CardsContainer from '../components/CardsContainer.vue';
 import GenericButton from '../components/GenericButton.vue';
-import { useRoute } from 'vue-router';
 
-const isActiveBtn = (routePath: string) => {
-    const route = useRoute();
-    return route.path === routePath
-}
 </script>
 
 <template>
