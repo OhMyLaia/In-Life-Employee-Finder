@@ -14,11 +14,13 @@ const isActiveLink = (routePath: string) => {
 
     <nav class="columns is-vcentered is-mobile is-variable bg-blue-200 p-3 is-full">
         <div class="column">
-            <h1 class="is-size-4-mobile
-            is-size-2-tablet
-            has-text-black
-            has-text-weight-bold
-            ">IN LIFE PROJECTS</h1>
+            <RouterLink to="/">
+                <h1 class="is-size-4-mobile
+                is-size-2-tablet
+                has-text-black
+                has-text-weight-bold
+                ">IN LIFE PROJECTS</h1>
+            </RouterLink>
             <p class="subtitle is-size-5-mobile is-size-2-tablet has-text-black">IT Solutions</p>
         </div>
 
