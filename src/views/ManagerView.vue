@@ -38,6 +38,7 @@ function handleSubmit() {
     };
 
     if (!employeeData) return message.value =`Employee could not be added to database`;
+    if (!name.value || !role.value || !location.value || !description.value) return `missing data`
     employeeStore.addEmployee(employeeData);
     message.value =`Employee successfully added to database!`;
     
