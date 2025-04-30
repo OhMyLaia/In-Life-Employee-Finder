@@ -26,7 +26,7 @@ const rolesArr: roleType[] = [roleType.all, roleType.senior, roleType.mid, roleT
             class="
             has-text-centered
             is-size-2
-            ">Search per seniority</h2>
+            ">Search per role or seniority</h2>
             <div
             class="
             has-text-centered
