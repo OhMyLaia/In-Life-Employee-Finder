@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { Ref } from 'vue';
 // store de tech para añadir al array
 import { useStackListStore } from '../stores/useStackListStore';
 // store de data.json
