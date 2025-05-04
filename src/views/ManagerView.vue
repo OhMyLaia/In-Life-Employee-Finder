@@ -3,7 +3,7 @@ import { ref } from 'vue';
 // store de tech para añadir al array
 import { useStackListStore } from '../stores/useStackListStore';
 // store de data.json
-import { useEmployeeStore } from '../stores/useEmployeeListStore';
+import useEmployeeStore from '../stores/useEmployeeListStore';
 import type { EmployeeType } from '../types';
 import GenericButton from '../components/GenericButton.vue';
 

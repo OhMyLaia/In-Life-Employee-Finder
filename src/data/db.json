@@ -1,0 +1,318 @@
+{
+    "employees": [
+        {
+            "name": "Juan Carlos Ruiz",
+            "role": "Scrum Master",
+            "location": "Spain",
+            "stack": [
+                "Bases de datos",
+                "Biing",
+                "Scrum Master",
+                "Product Manager",
+                "Vue",
+                "React",
+                "TypeScript",
+                "JavaScript"
+            ],
+            "description": "Experienced leader and agile coach. Leads product teams to success.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Laia Martínez Lerma",
+            "role": "Junior Frontend Developer",
+            "location": "Spain",
+            "stack": [
+                "Vue",
+                "React",
+                "TypeScript",
+                "JavaScript",
+                "Tailwind",
+                "CSS",
+                "HTML",
+                "Figma",
+                "Vite"
+            ],
+            "description": "Passionate about building responsive, dynamic, and user-friendly interfaces.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Maria González",
+            "role": "Mid Backend Developer",
+            "location": "Mexico",
+            "stack": [
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "AWS",
+                "Docker"
+            ],
+            "description": "Expert in building scalable server-side applications.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "David Pérez",
+            "role": "Frontend Developer",
+            "location": "Argentina",
+            "stack": [
+                "React",
+                "JavaScript",
+                "CSS",
+                "HTML",
+                "Tailwind"
+            ],
+            "description": "Focused on creating clean and scalable code for interactive applications.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Carlos Gómez",
+            "role": "Product Manager",
+            "location": "USA",
+            "stack": [
+                "Agile",
+                "Scrum",
+                "UX/UI Design",
+                "Market Analysis"
+            ],
+            "description": "Product strategy expert with a focus on delivering user-centric products.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Emily Thompson",
+            "role": "Junior Designer",
+            "location": "Canada",
+            "stack": [
+                "Figma",
+                "Sketch",
+                "UI/UX Design",
+                "Illustrator"
+            ],
+            "description": "Aspiring designer passionate about creating beautiful user experiences.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "John Smith",
+            "role": "Mid-Senior Data Scientist",
+            "location": "UK",
+            "stack": [
+                "Python",
+                "Machine Learning",
+                "Data Analysis",
+                "AI"
+            ],
+            "description": "Leading data-driven decision-making for business intelligence and growth.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Sophia Johnson",
+            "role": "Backend Developer",
+            "location": "Australia",
+            "stack": [
+                "Node.js",
+                "Express",
+                "GraphQL",
+                "MongoDB"
+            ],
+            "description": "Building efficient, reliable, and scalable backend systems.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Liam Brown",
+            "role": "Full Stack Developer",
+            "location": "Germany",
+            "stack": [
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express",
+                "Tailwind"
+            ],
+            "description": "Bridging the gap between the frontend and backend with seamless integration.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Olivia Wilson",
+            "role": "Junior Product Manager",
+            "location": "France",
+            "stack": [
+                "Product Management",
+                "Scrum",
+                "User Research",
+                "Market Analysis"
+            ],
+            "description": "Helping teams build products that meet market needs and user demands.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Benjamin White",
+            "role": "Mobile App Developer",
+            "location": "Italy",
+            "stack": [
+                "React Native",
+                "JavaScript",
+                "Node.js"
+            ],
+            "description": "Focused on delivering high-performance mobile applications.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Mia Martinez",
+            "role": "QA Engineer",
+            "location": "Spain",
+            "stack": [
+                "Automation",
+                "Selenium",
+                "Testing",
+                "CI/CD"
+            ],
+            "description": "Ensuring the highest quality of software through thorough testing processes.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Henry Davis",
+            "role": "Senior Designer",
+            "location": "New Zealand",
+            "stack": [
+                "UI/UX",
+                "Design Systems",
+                "Figma",
+                "Adobe XD"
+            ],
+            "description": "Crafting beautiful, user-friendly designs that elevate the user experience.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Charlotte Anderson",
+            "role": "Marketing Specialist",
+            "location": "USA",
+            "stack": [
+                "SEO",
+                "Content Strategy",
+                "Social Media Marketing"
+            ],
+            "description": "Creating impactful marketing strategies to engage users and drive growth.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "James Clark",
+            "role": "DevOps Engineer",
+            "location": "Germany",
+            "stack": [
+                "Docker",
+                "Kubernetes",
+                "CI/CD",
+                "AWS",
+                "Terraform"
+            ],
+            "description": "Automating infrastructure and ensuring the smooth deployment of applications.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Amelia Lee",
+            "role": "Frontend Developer",
+            "location": "Japan",
+            "stack": [
+                "React",
+                "Vue",
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            "description": "Creating responsive and interactive interfaces with modern web technologies.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Lucas Harris",
+            "role": "Security Engineer",
+            "location": "Canada",
+            "stack": [
+                "Security",
+                "Encryption",
+                "Penetration Testing",
+                "Firewalls"
+            ],
+            "description": "Protecting systems and networks from cyber threats and vulnerabilities.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Isabella Miller",
+            "role": "Operations Manager",
+            "location": "USA",
+            "stack": [
+                "Operations Management",
+                "Process Optimization",
+                "Team Leadership"
+            ],
+            "description": "Managing day-to-day operations for increased efficiency and productivity.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Ethan Moore",
+            "role": "Cloud Engineer",
+            "location": "UK",
+            "stack": [
+                "AWS",
+                "Azure",
+                "Google Cloud",
+                "Terraform",
+                "Docker"
+            ],
+            "description": "Managing and optimizing cloud infrastructure for scalable applications.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Chloe King",
+            "role": "Junior QA Engineer",
+            "location": "Spain",
+            "stack": [
+                "Testing",
+                "Automation",
+                "CI/CD",
+                "Selenium"
+            ],
+            "description": "Ensuring quality through automated tests and continuous integration.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Alex Chen",
+            "role": "Fullstack Developer",
+            "location": "United States",
+            "stack": [
+                "JavaScript",
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express"
+            ],
+            "description": "Passionate about building seamless applications from frontend to backend.",
+            "picture": "/03.svg"
+        },
+        {
+            "name": "Priya Patel",
+            "role": "Fullstack Developer",
+            "location": "India",
+            "stack": [
+                "TypeScript",
+                "Angular",
+                "Python",
+                "Django",
+                "PostgreSQL"
+            ],
+            "description": "Loves solving complex problems with elegant fullstack solutions.",
+            "picture": "/04.svg"
+        },
+        {
+            "name": "Marcus Johnson",
+            "role": "Fullstack Developer",
+            "location": "Germany",
+            "stack": [
+                "Java",
+                "Spring Boot",
+                "Vue.js",
+                "MySQL",
+                "Docker"
+            ],
+            "description": "Specializes in building scalable enterprise applications with modern tech stacks.",
+            "picture": "/03.svg"
+        }
+    ]
+}

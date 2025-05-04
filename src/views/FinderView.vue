@@ -7,6 +7,7 @@ import { roleType } from '../types';
 const selectedRole = ref<roleType>(roleType.all);
 
 const buttonClass = (role: roleType)  => {
+    console.log(`selectedRole -> ${JSON.stringify(selectedRole.value)}`)
     return selectedRole.value === role ?
         'button is-info is-light has-text-weight-bold m-5' :
         'button is-info is-light m-5';
