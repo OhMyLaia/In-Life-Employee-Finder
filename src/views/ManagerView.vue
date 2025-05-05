@@ -51,6 +51,8 @@ function deleteEmployee() {
     nameToDelete.value = ''
 }
 
+//todo: fix bug of adding an extra object to the db
+
 </script>
 
 <template>
@@ -100,7 +102,8 @@ function deleteEmployee() {
                 type="submit"
                 :text="'Submit'"
                 :class="'button is-info is-light m-4'"
-                @click="handleSubmit()" />
+                @click="handleSubmit"
+                />
             </form>
         </div>
         <h3 class="

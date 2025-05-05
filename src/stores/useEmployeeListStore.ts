@@ -10,7 +10,7 @@ const useEmployeeStore = defineStore('employeeStore', () => {
 
     const fetchEmployees = async () => {
 
-        const url = "http://localhost:3000/employees/"
+        const url = "http://localhost:3000/employees/";
         try {
             const response = await axios.get(url);
             employees.value = response.data;
@@ -86,7 +86,9 @@ const useEmployeeStore = defineStore('employeeStore', () => {
     }
 
     const addEmployee = (newEmployee: EmployeeType) => {
-        employees.value.push(newEmployee);
+        // employees.value.push(newEmployee);
+        const url = "http://localhost:3000/employees/";
+        axios.post(url, newEmployee)
     }
 
     const updateEmployee = (newData: EmployeeType) => {

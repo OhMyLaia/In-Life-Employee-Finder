@@ -41,7 +41,8 @@ const filteredEmployees = computed(() => {
                 :picture="employee.picture || '...'"
                 />
         </div>
-        <div v-if="employeeStore.getEmployeeList.length === 0">
+        <div class="column has-text-centered is-size-4"
+        v-if="employeeStore.getEmployeeList.length === 0">
             Loading employees...
         </div>
     </div>
