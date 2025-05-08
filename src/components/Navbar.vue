@@ -35,7 +35,7 @@ const isActiveLink = (routePath: string) => {
             </div>
             <div class="dropdown-menu open-left" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
-                    <RouterLink to="/" :class="[
+                    <RouterLink to="/home" :class="[
                         isActiveLink('/') ?
                             'has-text-weight-bold has-text-black'
                             :

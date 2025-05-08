@@ -5,33 +5,34 @@ import GenericButton from '../../components/GenericButton.vue';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import GenericInfoSpan from '../../components/GenericButton.vue';
 
-enum signStatus {
+enum SignStatus {
     success = 'success',
     failure = 'failure',
     pending = 'pending'
 }
 
-enum authError {
+enum AuthError {
     invalidEmail = 'invalid_email',
     invalidPassword = 'invalid_password',
     userNotFound = 'userNotFound',
+    unknown = 'unknown'
 }
 
 const email: Ref<string, string> = ref('');
 const password: Ref<string, string> = ref('');
-const status: Ref<signStatus> = ref(signStatus.pending);
-const error: Ref<string, string> = ref('');
+const status: Ref<SignStatus> = ref(SignStatus.pending);
+const error: Ref<AuthError> = ref(AuthError.unknown);
 
-const showStatusMessage = (statusParam: signStatus) => {
+const showStatusMessage = (statusParam: SignStatus) => {
     let message: string = '';
     switch (statusParam) {
-        case 'success' :
+        case 'success':
             message = 'User registered successfully.'
             break;
-        case 'failure' :
+        case 'failure':
             message = 'Something went wrong, please try again'
             break;
-        case 'pending' :
+        case 'pending':
             message = '';
             break;
     }
@@ -39,23 +40,50 @@ const showStatusMessage = (statusParam: signStatus) => {
     return message;
 }
 
-const handleRegisterUser = async () => {
-
-    // this is returning a promise
-    await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((data) => {
-        showStatusMessage(signStatus.success);
-        status.value = signStatus.success;
-        console.log(`user registered successfully`);
-    })
-    .catch((err) => {
-        showStatusMessage(signStatus.failure);
-        error.value = `Error: ${err.message}`;
-        status.value = signStatus.failure;
-        console.error(`error registering user, ${err}`);
-    })
-
+const showAuthMessage = (authParam: AuthError) => {
+    switch (authParam) {
+        case AuthError.invalidEmail:
+            return 'Please enter a valid email.'
+        case AuthError.invalidPassword:
+            return 'Incorrect password.'
+        case AuthError.userNotFound:
+            return 'No user found with this email.'
+        default:
+            return 'Something went wrong, please try again.'
+    }
 }
+
+    const mapFirebaseError = (firebaseCode: string): AuthError => {
+        switch (firebaseCode) {
+            case 'auth/invalid-email':
+                return AuthError.invalidEmail
+            case 'auth/wrong-password':
+                return AuthError.invalidPassword
+            case 'auth/user-not-found':
+                return AuthError.userNotFound
+            default:
+                return AuthError.unknown
+        }
+    }
+
+    const handleRegisterUser = async () => {
+
+        // this is returning a promise
+        await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+            .then((data) => {
+                showStatusMessage(SignStatus.success);
+                status.value = SignStatus.success;
+                console.log(`user registered successfully`);
+            })
+            .catch((err) => {
+                const mappedError = mapFirebaseError(err.code)
+                showAuthMessage(mappedError);
+                error.value = mappedError;
+                status.value = SignStatus.failure;
+                console.error(`error registering user, ${err}`);
+            })
+
+    }
 
 </script>
 
@@ -64,14 +92,19 @@ const handleRegisterUser = async () => {
         <div>
             <input type="email" placeholder="Email" v-model="email">
             <input type="password" placeholder="Password" v-model="password">
-            <GenericButton
-            :text="'Submit'"
+
+            <GenericButton :text="'Submit'"
             :class="'button is-info mt-3'"
-            @click="handleRegisterUser"
-            />
-            <p v-if="signStatus.success">
+            @click="handleRegisterUser" />
+
+            <p v-if="SignStatus.success">
                 <GenericInfoSpan
-                :text="showStatusMessage(signStatus.success)"
+                :text="showStatusMessage(SignStatus.success)"
+                class="text-is-info" />
+            </p>
+            <p v-if="SignStatus.failure">
+                <GenericInfoSpan
+                :text="showAuthMessage(error)"
                 class="text-is-danger"
                 />
             </p>

@@ -5,8 +5,5 @@ import { RouterView } from 'vue-router';
 
 <template>
     <Navbar />
-    <nav>
-        <RouterLink>routerlink to home feed register login</RouterLink>
-    </nav>
     <RouterView />
 </template>
