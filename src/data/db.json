@@ -15,7 +15,8 @@
         "JavaScript"
       ],
       "description": "Experienced leader and agile coach. Leads product teams to success.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "ffcb"
     },
     {
       "name": "Laia Martínez Lerma",
@@ -33,7 +34,8 @@
         "Vite"
       ],
       "description": "Passionate about building responsive, dynamic, and user-friendly interfaces.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "7eae"
     },
     {
       "name": "Maria González",
@@ -47,7 +49,8 @@
         "Docker"
       ],
       "description": "Expert in building scalable server-side applications.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "8e6e"
     },
     {
       "name": "David Pérez",
@@ -61,7 +64,8 @@
         "Tailwind"
       ],
       "description": "Focused on creating clean and scalable code for interactive applications.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "32f0"
     },
     {
       "name": "Carlos Gómez",
@@ -74,7 +78,8 @@
         "Market Analysis"
       ],
       "description": "Product strategy expert with a focus on delivering user-centric products.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "7d4e"
     },
     {
       "name": "Emily Thompson",
@@ -87,7 +92,8 @@
         "Illustrator"
       ],
       "description": "Aspiring designer passionate about creating beautiful user experiences.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "2def"
     },
     {
       "name": "John Smith",
@@ -100,7 +106,8 @@
         "AI"
       ],
       "description": "Leading data-driven decision-making for business intelligence and growth.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "c794"
     },
     {
       "name": "Sophia Johnson",
@@ -113,7 +120,8 @@
         "MongoDB"
       ],
       "description": "Building efficient, reliable, and scalable backend systems.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "e783"
     },
     {
       "name": "Liam Brown",
@@ -127,7 +135,8 @@
         "Tailwind"
       ],
       "description": "Bridging the gap between the frontend and backend with seamless integration.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "1b7b"
     },
     {
       "name": "Olivia Wilson",
@@ -140,7 +149,8 @@
         "Market Analysis"
       ],
       "description": "Helping teams build products that meet market needs and user demands.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "628e"
     },
     {
       "name": "Benjamin White",
@@ -152,7 +162,8 @@
         "Node.js"
       ],
       "description": "Focused on delivering high-performance mobile applications.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "1445"
     },
     {
       "name": "Mia Martinez",
@@ -165,7 +176,8 @@
         "CI/CD"
       ],
       "description": "Ensuring the highest quality of software through thorough testing processes.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "0701"
     },
     {
       "name": "Henry Davis",
@@ -178,7 +190,8 @@
         "Adobe XD"
       ],
       "description": "Crafting beautiful, user-friendly designs that elevate the user experience.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "cb59"
     },
     {
       "name": "Charlotte Anderson",
@@ -190,7 +203,8 @@
         "Social Media Marketing"
       ],
       "description": "Creating impactful marketing strategies to engage users and drive growth.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "e2e1"
     },
     {
       "name": "James Clark",
@@ -204,7 +218,8 @@
         "Terraform"
       ],
       "description": "Automating infrastructure and ensuring the smooth deployment of applications.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "24bc"
     },
     {
       "name": "Amelia Lee",
@@ -218,7 +233,8 @@
         "JavaScript"
       ],
       "description": "Creating responsive and interactive interfaces with modern web technologies.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "0f27"
     },
     {
       "name": "Lucas Harris",
@@ -231,7 +247,8 @@
         "Firewalls"
       ],
       "description": "Protecting systems and networks from cyber threats and vulnerabilities.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "9c55"
     },
     {
       "name": "Isabella Miller",
@@ -243,7 +260,8 @@
         "Team Leadership"
       ],
       "description": "Managing day-to-day operations for increased efficiency and productivity.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "6397"
     },
     {
       "name": "Ethan Moore",
@@ -257,7 +275,8 @@
         "Docker"
       ],
       "description": "Managing and optimizing cloud infrastructure for scalable applications.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "eb0b"
     },
     {
       "name": "Chloe King",
@@ -270,7 +289,8 @@
         "Selenium"
       ],
       "description": "Ensuring quality through automated tests and continuous integration.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "35b8"
     },
     {
       "name": "Alex Chen",
@@ -284,7 +304,8 @@
         "Express"
       ],
       "description": "Passionate about building seamless applications from frontend to backend.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "4f43"
     },
     {
       "name": "Priya Patel",
@@ -298,7 +319,8 @@
         "PostgreSQL"
       ],
       "description": "Loves solving complex problems with elegant fullstack solutions.",
-      "picture": "/04.svg"
+      "picture": "/04.svg",
+      "id": "3862"
     },
     {
       "name": "Marcus Johnson",
@@ -312,7 +334,8 @@
         "Docker"
       ],
       "description": "Specializes in building scalable enterprise applications with modern tech stacks.",
-      "picture": "/03.svg"
+      "picture": "/03.svg",
+      "id": "e6b2"
     },
     {
       "id": "e53d",
@@ -343,6 +366,24 @@
     },
     {
       "id": "251f",
+      "name": "",
+      "role": "",
+      "location": "",
+      "stack": [],
+      "description": "",
+      "picture": ""
+    },
+    {
+      "id": "b9d2",
+      "name": "Carla Foreman",
+      "role": "Iusto ipsum nostrud",
+      "location": "Molestiae ullamco do",
+      "stack": [],
+      "description": "Consectetur culpa p",
+      "picture": ""
+    },
+    {
+      "id": "7c98",
       "name": "",
       "role": "",
       "location": "",

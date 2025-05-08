@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia';
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 import './style.css';
 import '../src/assets/biings-ds/build/bds.css'
 // @ts-ignore
@@ -8,7 +8,8 @@ import 'vue-toastification/dist/index.css';
 import Router from './router'
 import App from './App.vue';
 import "@/assets/biings-ds/build/bds.css";
-// import 'biings-ds/dist/bds-icons.svg';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../src/firebase';
 
 const app = createApp(App);
 const pinia = createPinia();

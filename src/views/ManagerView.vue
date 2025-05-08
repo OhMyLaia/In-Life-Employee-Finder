@@ -33,6 +33,8 @@ function handleSubmit() {
         picture: ''
     };
 
+    // hay un re-render, FIX
+    // me manda la data pero son strings vacios ???
     if (!employeeData) return alert(`Employee could not be added to database`);
     employeeStore.addEmployee(employeeData)
 

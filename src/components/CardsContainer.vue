@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CardEmployee from './CardEmployee.vue';
 import { computed, onMounted } from 'vue';
-import { type EmployeeType, type CardsContainerPropsType, roleType } from '../types';
+import { type CardsContainerPropsType, roleType } from '../types';
 import useEmployeeStore from '../stores/useEmployeeListStore';
 
 const employeeStore = useEmployeeStore();
