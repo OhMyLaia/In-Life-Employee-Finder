@@ -88,24 +88,24 @@ const showAuthMessage = (authParam: AuthError) => {
 </script>
 
 <template>
-    <div class="box">
-        <div>
-            <input type="email" placeholder="Email" v-model="email">
-            <input type="password" placeholder="Password" v-model="password">
+    <div class="box is-floating is-flex">
+        <div class="column is-flex is-flex-direction-column m-2">
+            <input class="m-2 bg-blue-200 rounded" type="email" placeholder="  Email" v-model="email">
+            <input class="m-2 bg-blue-200 rounded" type="password" placeholder="  Password" v-model="password">
 
             <GenericButton :text="'Submit'"
-            :class="'button is-info mt-3'"
+            :class="'button is-info m-2'"
             @click="handleRegisterUser" />
 
             <p v-if="SignStatus.success">
                 <GenericInfoSpan
                 :text="showStatusMessage(SignStatus.success)"
-                class="text-is-info" />
+                class="has-text-info m-2" />
             </p>
             <p v-if="SignStatus.failure">
                 <GenericInfoSpan
                 :text="showAuthMessage(error)"
-                class="text-is-danger"
+                class="has-text-danger m-2"
                 />
             </p>
         </div>
