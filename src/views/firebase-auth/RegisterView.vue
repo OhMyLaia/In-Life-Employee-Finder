@@ -73,11 +73,11 @@ const showAuthMessage = (authParam: AuthError) => {
 
         // this is returning a promise
         await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-            .then((data) => {
+            .then(() => {
                 showStatusMessage(SignStatus.success);
                 status.value = SignStatus.success;
                 console.log(`user registered successfully`);
-                router.push('/home')
+                setTimeout(() => router.push('/home'), 1500)
             })
             .catch((err) => {
                 const mappedError = mapFirebaseError(err.code)
@@ -92,7 +92,7 @@ const showAuthMessage = (authParam: AuthError) => {
 </script>
 
 <template>
-    <div class="box is-floating is-flex">
+    <div class="box is-floating is-flex text-balance m-6">
         <div class="column is-flex is-flex-direction-column m-2">
             <input class="m-2 bg-blue-200 rounded" type="email" placeholder="  Email" v-model="email">
             <input class="m-2 bg-blue-200 rounded" type="password" placeholder="  Password" v-model="password">
@@ -102,12 +102,12 @@ const showAuthMessage = (authParam: AuthError) => {
             :class="'button is-info m-2'"
             @click="handleRegisterUser" />
 
-            <p v-if="SignStatus.success">
+            <p v-if="status === SignStatus.success">
                 <GenericInfoSpan
                 :text="showStatusMessage(SignStatus.success)"
                 class="has-text-info mt-2" />
             </p>
-            <p v-if="SignStatus.failure">
+            <p v-if="status === SignStatus.failure">
                 <GenericInfoSpan
                 :text="showAuthMessage(error)"
                 class="has-text-danger mt-2"
