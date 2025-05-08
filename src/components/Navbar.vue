@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router';
 import GenericSvg from './GenericSvg.vue';
-// import icons from "../../src/assets/biings-ds/build/bds-icons.min.svg#line-compact-g"
+
+const route = useRoute();
 
 const isActiveLink = (routePath: string) => {
     const route = useRoute();
@@ -11,7 +12,8 @@ const isActiveLink = (routePath: string) => {
 </script>
 
 <template>
-    <section class="bg-blue-200 p-3">
+    <section v-if="route.path !== '/login' && route.path !== '/register'"
+    class="bg-blue-200 p-3">
         <nav class="columns is-vcentered is-mobile">
             <div class="column">
                 <h1 class="is-size-4-mobile
