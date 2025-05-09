@@ -1,57 +1,65 @@
 <script setup lang="ts">
-
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import GenericButton from '../../components/GenericButton.vue';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import GenericInfoSpan from '../../components/GenericButton.vue';
 import { useRouter } from 'vue-router';
+import { SignStatus, AuthError } from '../../types';
+import { showStatusMessage, showAuthMessage, mapFirebaseError } from '../../utils/auth-utils';
+import GenericSignBox from './GenericSignBox.vue';
 
-enum SignStatus {
-    success = 'success',
-    failure = 'failure',
-    pending = 'pending'
-}
-
-enum AuthError {
-    invalidEmail = 'invalid_email',
-    invalidPassword = 'invalid_password',
-    userNotFound = 'userNotFound',
-    unknown = 'unknown'
-}
-
-const email: Ref<string, string> = ref('');
-const password: Ref<string, string> = ref('');
+const email: Ref<string> = ref('');
+const password: Ref<string> = ref('');
 const status: Ref<SignStatus> = ref(SignStatus.pending);
 const error: Ref<AuthError> = ref(AuthError.unknown);
+const router = useRouter();
 
+const handleRegisterUser = async () => {
 
+// firebase is returning a promise
+await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then(() => {
+        showStatusMessage(SignStatus.success, router);
+        status.value = SignStatus.success;
+        console.log(`user registered successfully`);
+        setTimeout(() => router.push('/home'), 1500)
+    })
+    .catch((err) => {
+        const mappedError = mapFirebaseError(err.code)
+        showAuthMessage(mappedError);
+        error.value = mappedError;
+        status.value = SignStatus.failure;
+        console.error(`error registering user, ${err}`);
+    })
+}
 </script>
 
 <template>
-    <div class="box is-floating is-flex text-balance m-6">
-        <div class="column is-flex is-flex-direction-column m-2">
-            <input class="m-2 bg-blue-200 rounded" type="email" placeholder="  Email" v-model="email">
-            <input class="m-2 bg-blue-200 rounded" type="password" placeholder="  Password" v-model="password">
-
-            <GenericButton
-            :text="'Submit'"
-            :class="'button is-info m-2'"
-            @click="handleRegisterUser" />
-
-            <p v-if="status === SignStatus.success">
-                <GenericInfoSpan
-                :text="showStatusMessage(SignStatus.success)"
-                class="has-text-info mt-2" />
+    <div class="has-text-centered">
+        <h1 class="is-size-4-mobile
+            is-size-2-tablet
+            has-text-black
+            has-text-weight-bold
+            mt-6
+            mb-3
+            ">IN LIFE PROJECTS</h1>
+        <h3 class="is-size-4">Register</h3>
+        <!-- <div class="column is-flex is-flex-direction-column m-2"> -->
+            <GenericSignBox
+            :email="email"
+            :password="password"
+            @update:email="email = $event"
+            @update:password="password = $event"
+            :handleAuth="handleRegisterUser"
+            :status="status"
+            :showStatusMessage="showStatusMessage(SignStatus.success, router)"
+            :showAuthMessage="showAuthMessage(error)"
+            />
+            <p class="has-text-black">
+            Forgot your password? <RouterLink to="/*">Recover</RouterLink>
             </p>
-            <p v-if="status === SignStatus.failure">
-                <GenericInfoSpan
-                :text="showAuthMessage(error)"
-                class="has-text-danger mt-2"
-                />
+            <p class="has-text-black">
+            Already have an account? <RouterLink to="/">Login</RouterLink>
             </p>
-        </div>
-
+        <!-- </div> -->
     </div>
-
 </template>

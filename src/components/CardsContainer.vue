@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import CardEmployee from './CardEmployee.vue';
-import { computed, onMounted } from 'vue';
-import { type CardsContainerPropsType, roleType } from '../types';
-import useEmployeeStore from '../stores/useEmployeeListStore';
+    import CardEmployee from './CardEmployee.vue';
+    import { computed, onMounted } from 'vue';
+    import { type CardsContainerPropsType, roleType } from '../types';
+    import useEmployeeStore from '../stores/useEmployeeListStore';
 
-const employeeStore = useEmployeeStore();
+    const employeeStore = useEmployeeStore();
 
-const props = defineProps<CardsContainerPropsType>();
+    const props = defineProps<CardsContainerPropsType>();
 
-onMounted(() => {
-    employeeStore.fetchEmployees();
-});
+    onMounted(() => {
+        employeeStore.fetchEmployees();
+    });
 
-const filteredEmployees = computed(() => {
-    const role = props.filterByRole ?? roleType.all;
-    return employeeStore.filterEmployees(role);
-})
-
-
+    const filteredEmployees = computed(() => {
+        const role = props.filterByRole ?? roleType.all;
+        return employeeStore.filterEmployees(role);
+    })
 </script>
 
 <template>

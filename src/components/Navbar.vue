@@ -4,18 +4,18 @@ import GenericSvg from './GenericSvg.vue';
 
 const route = useRoute();
 
-const isActiveLink = (routePath: string) => {
-    const route = useRoute();
-    return route.path === routePath
+const isActiveLink = (routePath: string): boolean => {
+    return route.path === routePath;
 }
 
 </script>
 
 <template>
     <section
-    class="bg-blue-200 p-3">
+    class="container bg-blue-200 p-3 md:p-6">
+    <div class="container">
         <nav v-if="route.path !== '/login' && route.path !== '/register' && route.path !== '/'"
-        class="columns is-vcentered is-mobile">
+        class="columns is-vcentered is-mobile m-0">
             <div class="column">
                 <h1 class="is-size-4-mobile
                 is-size-2-tablet
@@ -39,11 +39,11 @@ const isActiveLink = (routePath: string) => {
                 <div class="dropdown-menu open-left" id="dropdown-menu" role="menu">
                     <div class="dropdown-content">
                         <RouterLink to="/home" :class="[
-                            isActiveLink('/') ?
-                            'has-text-weight-bold has-text-black'
+                            isActiveLink('/home') ?
+                            'has-text-weight-bold has-text-black bg-blue-100'
                             :
                             'has-text-black']"
-                                class="dropdown-item ml-5">
+                                class="dropdown-item">
                             <span class="
                             is-size-6-mobile
                             is-size-3-tablet
@@ -55,7 +55,7 @@ const isActiveLink = (routePath: string) => {
                             'has-text-weight-bold has-text-black'
                             :
                             'has-text-black']"
-                        class="dropdown-item ml-5">
+                        class="dropdown-item">
                             <span class="
                             is-size-6-mobile
                             is-size-3-tablet
@@ -67,7 +67,7 @@ const isActiveLink = (routePath: string) => {
                             'has-text-weight-bold has-text-black'
                             :
                             'has-text-black']"
-                            class="dropdown-item ml-5">
+                            class="dropdown-item">
                             <span class="
                             is-size-6-mobile
                             is-size-3-tablet
@@ -79,13 +79,20 @@ const isActiveLink = (routePath: string) => {
                 </div>
             </div>
         </nav>
+    </div>
     </section>
 </template>
 
 <style lang="css" scoped>
+
 .dropdown-menu.open-left {
     left: auto;
     right: 0;
     transform-origin: top right;
+}
+
+.body {
+    width: 100vw;
+    overflow: hidden;
 }
 </style>

@@ -1,37 +1,37 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Ref } from 'vue';
-import { mapFirebaseError, showStatusMessage, showAuthMessage } from '../utils/auth-utils';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useRouter } from 'vue-router';
-import { SignStatus } from '../types';
-import { AuthError } from '../types'
-import GenericSignBox from './firebase-auth/GenericSignBox.vue';
+    import { ref } from 'vue';
+    import type { Ref } from 'vue';
+    import { mapFirebaseError, showStatusMessage, showAuthMessage } from '../utils/auth-utils';
+    import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+    import { useRouter } from 'vue-router';
+    import { SignStatus } from '../types';
+    import { AuthError } from '../types'
+    import GenericSignBox from './firebase-auth/GenericSignBox.vue';
 
-const email: Ref<string> = ref('');
-const password: Ref<string> = ref('');
-const status: Ref<SignStatus> = ref(SignStatus.pending);
-const error: Ref<AuthError> = ref(AuthError.unknown);
-const router = useRouter();
+    const email: Ref<string> = ref('');
+    const password: Ref<string> = ref('');
+    const status: Ref<SignStatus> = ref(SignStatus.pending);
+    const error: Ref<AuthError> = ref(AuthError.unknown);
+    const router = useRouter();
 
-const handleRegisterUser = async () => {
+    const handleSignInUser = async () => {
 
-// firebase is returning a promise
-await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then(() => {
-        showStatusMessage(SignStatus.success, router);
-        status.value = SignStatus.success;
-        console.log(`user registered successfully`);
-        setTimeout(() => router.push('/home'), 1500)
-    })
-    .catch((err) => {
-        const mappedError = mapFirebaseError(err.code)
-        showAuthMessage(mappedError);
-        error.value = mappedError;
-        status.value = SignStatus.failure;
-        console.error(`error registering user, ${err}`);
-    })
-}
+    // firebase is returning a promise
+    await signInWithEmailAndPassword(getAuth(), email.value, password.value)
+        .then(() => {
+            showStatusMessage(SignStatus.success, router);
+            status.value = SignStatus.success;
+            console.log(`user logged successfully`);
+            setTimeout(() => router.push('/home'), 1500)
+        })
+        .catch((err) => {
+            const mappedError = mapFirebaseError(err.code)
+            showAuthMessage(mappedError);
+            error.value = mappedError;
+            status.value = SignStatus.failure;
+            console.error(`error logging user, ${err}`);
+        })
+    }
 </script>
 
 <template>
@@ -49,7 +49,7 @@ await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
         :password="password"
         @update:email="email = $event"
         @update:password="password = $event"
-        :handleAuth="handleRegisterUser"
+        :handleAuth="handleSignInUser"
         :status="status"
         :showStatusMessage="showStatusMessage(SignStatus.success, router)"
         :showAuthMessage="showAuthMessage(error)"

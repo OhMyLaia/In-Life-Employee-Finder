@@ -45,3 +45,8 @@ export enum AuthError {
     userNotFound = 'userNotFound',
     unknown = 'unknown'
 }
+
+export type infoSpanProps = {
+    text: string,
+    customClass: string
+}

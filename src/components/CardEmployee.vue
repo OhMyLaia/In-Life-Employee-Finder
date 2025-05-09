@@ -1,13 +1,18 @@
 <script setup lang="ts">
-
-import { defineProps } from 'vue';
-import type { CardPropsType, EmployeeType } from '../types';
+import { defineProps, ref } from 'vue';
+import type { EmployeeType } from '../types';
 import GenericButton from './GenericButton.vue';
-import { useToggleDescriptionBtn } from '../stores/useToggleDescriptionBtn';
+// import { useToggleDescriptionBtn } from '../stores/useToggleDescriptionBtn';
 
+const toggleBtn = ref<boolean>(false);
+
+const toggleBtnFun = () => toggleBtn.value = !toggleBtn.value
+
+const toggleBtnValue = () => toggleBtn.value
 defineProps<EmployeeType>();
 
-const toggleBtnStore = useToggleDescriptionBtn();
+// const toggleBtnStore = useToggleDescriptionBtn();
+
 
 </script>
 
@@ -27,34 +32,47 @@ const toggleBtnStore = useToggleDescriptionBtn();
         is-marginless
         !bg-blue-100
         ">
-        <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ name }}</h3>
-        <p class="is-size-4-mobile is-size-3-tablet">{{ role }}</p>
-        <p class="is-size-5-mobile is-size-4-tablet">{{location }}</p>
-            <div class="columns is-vcentered">
+        <div class="has-text-left-tablet
+        has-text-centered-mobile
+        md:w-1/2">
+            <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ name }}</h3>
+            <p class="is-size-4-mobile is-size-3-tablet">{{ role }}</p>
+            <p class="is-size-5-mobile is-size-4-tablet mb-5">{{location }}</p>
+        </div>
+            <div class="columns
+            is-vcentered
+            has-text-left-tablet
+            has-text-centered-mobile
+            is-align-items-start">
                 <div class="column is-6">
                     <br>
-                    <div class="is-size-5-mobile is-size-4-tablet"
+                    <div class="is-size-5-mobile
+                    is-size-4-tablet"
                     v-for="(skill) in stack">
                         <p>{{ skill }}</p>
                     </div>
                     <GenericButton
-                    :text="toggleBtnStore.toggleBtnValue() === false ?
+                    :text="toggleBtnValue() === false ?
                         'See more' :
                         'See less'"
                         :class="'button is-info mt-3'"
-                        @click="toggleBtnStore.toggleBtnFun"/>
+                        @click="toggleBtnFun"/>
                     <p class="text-lg
                         md:text-2xl
                         is-italic
                         mt-3"
-                        v-if="toggleBtnStore.toggleBtnValue() === true">
+                        v-if="toggleBtnValue() === true">
                         {{ description }}</p>
                 </div>
-                <div class="column is-6 !bg-blue-200">
-                    <img class=""
+                <figure class="column
+                is-6
+                is-flex
+                is-justify-content-center
+                is-align-items-start">
+                    <img class="is-rounded"
                     :src="picture">
-                </div>
-                </div>
+                </figure>
+            </div>
             </div>
         </div>
     </section>

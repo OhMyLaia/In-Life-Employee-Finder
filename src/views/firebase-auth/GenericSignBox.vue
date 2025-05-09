@@ -22,46 +22,6 @@ const emit = defineEmits<{
     (event: 'update:password', value: string): void;
 }>()
 
-
-// const email: Ref<string, string> = ref('');
-// const password: Ref<string, string> = ref('');
-// const status: Ref<SignStatus> = ref(SignStatus.pending);
-// const error: Ref<AuthError> = ref(AuthError.unknown);
-// const router = useRouter();
-
-// const showStatusMessage = (statusParam: SignStatus) => {
-
-//     let message: string = '';
-
-//     if (statusParam === 'success' && router.currentRoute.value.path === '/register') {
-//         message = 'User registered successfully.';
-
-//     } else if (statusParam === 'success' && router.currentRoute.value.path === '/login') {
-//         message = "Welcome again!";
-
-//     } else if (statusParam === 'failure') {
-//         message = 'Something went wrong, please try again';
-
-//     } else {
-//         message;
-//     }
-
-//     return message
-// }
-
-// const showAuthMessage = (authParam: AuthError) => {
-//     switch (authParam) {
-//         case AuthError.invalidEmail:
-//             return 'Please enter a valid email.'
-//         case AuthError.invalidPassword:
-//             return 'Incorrect password.'
-//         case AuthError.userNotFound:
-//             return 'No user found with this email.'
-//         default:
-//             return 'Something went wrong, please try again.'
-//     }
-// }
-
 </script>
 
 <template>
