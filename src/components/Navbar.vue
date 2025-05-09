@@ -14,7 +14,7 @@ const isActiveLink = (routePath: string) => {
 <template>
     <section
     class="bg-blue-200 p-3">
-        <nav v-if="route.path !== '/login' && route.path !== '/register'"
+        <nav v-if="route.path !== '/login' && route.path !== '/register' && route.path !== '/'"
         class="columns is-vcentered is-mobile">
             <div class="column">
                 <h1 class="is-size-4-mobile

@@ -69,25 +69,25 @@ const showAuthMessage = (authParam: AuthError) => {
         }
     }
 
-    const handleRegisterUser = async () => {
+    // const handleRegisterUser = async () => {
 
-        // this is returning a promise
-        await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-            .then(() => {
-                showStatusMessage(SignStatus.success);
-                status.value = SignStatus.success;
-                console.log(`user registered successfully`);
-                setTimeout(() => router.push('/home'), 1500)
-            })
-            .catch((err) => {
-                const mappedError = mapFirebaseError(err.code)
-                showAuthMessage(mappedError);
-                error.value = mappedError;
-                status.value = SignStatus.failure;
-                console.error(`error registering user, ${err}`);
-            })
+    //     // this is returning a promise
+    //     await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    //         .then(() => {
+    //             showStatusMessage(SignStatus.success);
+    //             status.value = SignStatus.success;
+    //             console.log(`user registered successfully`);
+    //             setTimeout(() => router.push('/home'), 1500)
+    //         })
+    //         .catch((err) => {
+    //             const mappedError = mapFirebaseError(err.code)
+    //             showAuthMessage(mappedError);
+    //             error.value = mappedError;
+    //             status.value = SignStatus.failure;
+    //             console.error(`error registering user, ${err}`);
+    //         })
 
-    }
+    // }
 
 </script>
 

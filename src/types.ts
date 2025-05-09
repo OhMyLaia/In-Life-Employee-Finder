@@ -32,3 +32,16 @@ export enum roleType {
 export type CardsContainerPropsType = {
     filterByRole?: roleType;
 }
+
+export enum SignStatus {
+    success = 'success',
+    failure = 'failure',
+    pending = 'pending'
+}
+
+export enum AuthError {
+    invalidEmail = 'invalid_email',
+    invalidPassword = 'invalid_password',
+    userNotFound = 'userNotFound',
+    unknown = 'unknown'
+}
