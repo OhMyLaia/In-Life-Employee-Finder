@@ -4,7 +4,6 @@ import FinderView from "@/views/FinderView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import ManagerView from "@/views/ManagerView.vue";
 import SignHomeView from "@/views/SignHomeView.vue";
-import LoginView from "@/views/firebase-auth/LoginView.vue";
 import RegisterView from "@/views/firebase-auth/RegisterView.vue";
 
 const router = createRouter({
@@ -29,11 +28,6 @@ const router = createRouter({
             path: "/",
             name: "auth-user",
             component: SignHomeView
-        },
-        {
-            path: "/login",
-            name: "login",
-            component: LoginView
         },
         {
             path: "/register",

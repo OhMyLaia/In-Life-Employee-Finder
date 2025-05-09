@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import GenericSignBox from './firebase-auth/GenericSignBox.vue';
-import { mapFirebaseError, showStatusMessage, showAuthMessage } from '../utils/auth-utils';
 import { ref } from 'vue';
 import type { Ref } from 'vue';
+import { mapFirebaseError, showStatusMessage, showAuthMessage } from '../utils/auth-utils';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'vue-router';
 import { SignStatus } from '../types';
 import { AuthError } from '../types'
+import GenericSignBox from './firebase-auth/GenericSignBox.vue';
 
-const email: Ref<string, string> = ref('');
-const password: Ref<string, string> = ref('');
+const email: Ref<string> = ref('');
+const password: Ref<string> = ref('');
 const status: Ref<SignStatus> = ref(SignStatus.pending);
 const error: Ref<AuthError> = ref(AuthError.unknown);
 const router = useRouter();
-
-
 
 const handleRegisterUser = async () => {
 
 // firebase is returning a promise
 await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then(() => {
-        showStatusMessage(SignStatus.success);
+        showStatusMessage(SignStatus.success, router);
         status.value = SignStatus.success;
         console.log(`user registered successfully`);
         setTimeout(() => router.push('/home'), 1500)
@@ -34,8 +32,6 @@ await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
         console.error(`error registering user, ${err}`);
     })
 }
-
-
 </script>
 
 <template>
@@ -49,9 +45,13 @@ await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
             ">IN LIFE PROJECTS</h1>
             <h3 class="is-size-4">Login</h3>
         <GenericSignBox
+        :email="email"
+        :password="password"
+        @update:email="email = $event"
+        @update:password="password = $event"
         :handleAuth="handleRegisterUser"
         :status="status"
-        :showStatusMessage="showStatusMessage(SignStatus.success)"
+        :showStatusMessage="showStatusMessage(SignStatus.success, router)"
         :showAuthMessage="showAuthMessage(error)"
         />
         <p class="has-text-black">
@@ -59,10 +59,3 @@ await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
         </p>
     </div>
 </template>
-
-<!-- const props = defineProps<{
-    handleAuth: () => void;
-    status: SignStatus;
-    showStatusMessage: string;
-    showAuthMessage: string;
-}>() -->

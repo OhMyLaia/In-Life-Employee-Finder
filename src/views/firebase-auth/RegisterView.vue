@@ -24,70 +24,7 @@ const email: Ref<string, string> = ref('');
 const password: Ref<string, string> = ref('');
 const status: Ref<SignStatus> = ref(SignStatus.pending);
 const error: Ref<AuthError> = ref(AuthError.unknown);
-const router = useRouter();
 
-const showStatusMessage = (statusParam: SignStatus) => {
-    let message: string = '';
-    switch (statusParam) {
-        case 'success':
-            message = 'User registered successfully.'
-            break;
-        case 'failure':
-            message = 'Something went wrong, please try again'
-            break;
-        case 'pending':
-            message = '';
-            break;
-    }
-
-    return message;
-}
-
-const showAuthMessage = (authParam: AuthError) => {
-    switch (authParam) {
-        case AuthError.invalidEmail:
-            return 'Please enter a valid email.'
-        case AuthError.invalidPassword:
-            return 'Incorrect password.'
-        case AuthError.userNotFound:
-            return 'No user found with this email.'
-        default:
-            return 'Something went wrong, please try again.'
-    }
-}
-
-    const mapFirebaseError = (firebaseCode: string): AuthError => {
-        switch (firebaseCode) {
-            case 'auth/invalid-email':
-                return AuthError.invalidEmail
-            case 'auth/wrong-password':
-                return AuthError.invalidPassword
-            case 'auth/user-not-found':
-                return AuthError.userNotFound
-            default:
-                return AuthError.unknown
-        }
-    }
-
-    // const handleRegisterUser = async () => {
-
-    //     // this is returning a promise
-    //     await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    //         .then(() => {
-    //             showStatusMessage(SignStatus.success);
-    //             status.value = SignStatus.success;
-    //             console.log(`user registered successfully`);
-    //             setTimeout(() => router.push('/home'), 1500)
-    //         })
-    //         .catch((err) => {
-    //             const mappedError = mapFirebaseError(err.code)
-    //             showAuthMessage(mappedError);
-    //             error.value = mappedError;
-    //             status.value = SignStatus.failure;
-    //             console.error(`error registering user, ${err}`);
-    //         })
-
-    // }
 
 </script>
 
