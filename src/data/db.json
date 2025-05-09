@@ -655,6 +655,27 @@
       ],
       "description": "Quos sunt consequunt",
       "picture": "/02.svg"
+    },
+    {
+      "id": "b270",
+      "name": "Tucker Hood",
+      "role": "Dolore sunt molliti",
+      "location": "Beatae omnis culpa q",
+      "stack": [],
+      "description": "Quae ea impedit vol",
+      "picture": "/02.svg"
+    },
+    {
+      "id": "1746798576197",
+      "name": "esme-chan",
+      "role": "miau",
+      "location": "home",
+      "stack": [
+        "miau",
+        "miau"
+      ],
+      "description": "mimiimimimiii",
+      "picture": "/02.svg"
     }
   ]
 }

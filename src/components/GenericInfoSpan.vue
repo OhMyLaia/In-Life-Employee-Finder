@@ -1,9 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
     import type { infoSpanProps } from '../types';
+
     const props: infoSpanProps = defineProps<{
-        text: '',
-        customClass: '',
-    }>()
+        text: string;
+        customClass: string;
+    }>();
+
 </script>
 
 <template>

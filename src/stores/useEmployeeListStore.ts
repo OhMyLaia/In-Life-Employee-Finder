@@ -12,13 +12,13 @@ const useEmployeeStore = defineStore('employeeStore', () => {
 
         const url = "http://localhost:3000/employees/";
         try {
-            const response = await axios.get(url);
-            employees.value = response.data;
-            console.log(`tried and got employees.value = ${employees.value}`)
+            await axios.get(url)
+            .then(response => {
+            employees.value = response.data});
+        console.log(`tried and got employees.value from store = ${employees.value.map(emp => emp.id)}`)
 
         } catch (error) {
             console.log("Error fetching data: ", error)
-
         }
     }
 
@@ -72,16 +72,37 @@ const useEmployeeStore = defineStore('employeeStore', () => {
     
     }
 
-    const deleteEmployee = (name: string) => {
+    // const deleteEmployee = (id: string) => {
 
-        try {
-            const employeeIndex: number = employees.value.findIndex(emp => emp.name === cleanInput(name))
+    //     try {
+    //         const employeeIndex: number = employees.value.findIndex(emp => {
+    //             console.log(`cleaned database name -> ${emp.id} === ${id}`)
+    //             return String(emp.id) === String(id)
+    //         })
     
-            if (employeeIndex !== -1) employees.value.splice(employeeIndex, 1);
-            else console.log(`could not find index`);
+    //         if (employeeIndex !== -1) employees.value.splice(employeeIndex, 1);
+    //         else console.log(`could not find index`);
 
+    //     } catch (error) {
+    //         console.log(`could not find employee, ${error}`)
+    //     }
+    // }
+
+    const deleteEmployee = (id: string) => {
+        try {
+            console.log(`Attempting to delete employee with id: ${id}`);
+            const employeeIndex: number = employees.value.findIndex(emp => {
+                console.log(`emp.id: ${emp.id}, comparing with id: ${id}`);
+                return String(emp.id) === String(id);
+            });
+    
+            if (employeeIndex !== -1) {
+                employees.value.splice(employeeIndex, 1);
+            } else {
+                console.log(`Employee with id ${id} not found.`);
+            }
         } catch (error) {
-            console.log(`could not find employee, ${error}`)
+            console.log(`Error deleting employee: ${error}`);
         }
     }
 

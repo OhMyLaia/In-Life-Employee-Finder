@@ -6,29 +6,30 @@ import { useStackListStore } from '../stores/useStackListStore';
 import useEmployeeStore from '../stores/useEmployeeListStore';
 import type { EmployeeType } from '../types';
 import GenericButton from '../components/GenericButton.vue';
-import GenericInfoSpan from '../components/GenericButton.vue';
+import GenericInfoSpan from '../components/GenericInfoSpan.vue';
 
 const stackListStore = useStackListStore();
 const employeeStore = useEmployeeStore();
 
 const name = ref('');
+// const id = ref('');
 const role = ref('');
 const location = ref('');
 const newTechnology = ref('');
 const description = ref('');
-const nameToDelete = ref('');
+const idToDelete = ref('');
 const isSubmitted = ref<true | false | null>(null);
 
 function addStackTechnology(newTech: string) {
     stackListStore.addTech(newTech);
     newTechnology.value = '';
-
 }
 
 function handleSubmit() {
 
     const employeeData: EmployeeType = {
         name: name.value,
+        id: String(Date.now()),
         role: role.value,
         location: location.value,
         stack: stackListStore.stack,
@@ -56,14 +57,12 @@ function handleSubmit() {
 }
 
 
-function deleteEmployee() {
-    if (!nameToDelete) return alert(`Employee could not be deleted from database`);
-    employeeStore.deleteEmployee(nameToDelete.value)
-    nameToDelete.value = ''
-}
-
-//todo: fix bug of adding an extra object to the db
-
+// function deleteEmployee(idToDelete: string) {
+//     if (!idToDelete) return alert(`Employee could not be deleted from database`);
+//     else employeeStore.deleteEmployee(idToDelete.value);
+//     console.log(`Deleting employee with ID: ${idToDelete.value}`);
+//     idToDelete.value = '';
+// }
 </script>
 
 <template>
@@ -139,13 +138,13 @@ function deleteEmployee() {
             <p v-if="isSubmitted === true">
                 <GenericInfoSpan
                 :text="'Employee created successfully!'"
-                class="has-text-info mt-2" />
+                customClass="has-text-info mt-2" />
             </p>
 
             <p v-if="isSubmitted === false">
                 <GenericInfoSpan
                 :text="'Something went wrong, try again.'"
-                class="has-text-info mt-2" />
+                customClass="has-text-info mt-2" />
             </p>
 
         </div>
@@ -160,13 +159,13 @@ function deleteEmployee() {
             Delete employee</h3>
 
         <div class="field is-required">
-        <label for="delete-name" class="label">Name</label>
+        <label for="delete-name" class="label">ID</label>
         <input
-            id="delete-name"
+            id="delete-id"
             class="input"
             type="text"
-            placeholder="Enter employee name to delete"
-            v-model="nameToDelete"
+            placeholder="Enter employee id to delete"
+            v-model="idToDelete"
         />
         </div>
 
@@ -175,7 +174,12 @@ function deleteEmployee() {
             type="submit"
             :text="'Delete'"
             :class="'button is-danger mb-6'"
-            @click="deleteEmployee"
+            @click="{
+                if (!idToDelete) {
+                    console.log('Please provide a valid ID');
+                }
+                employeeStore.deleteEmployee(idToDelete);
+                }"
             />
         </div>
     </div>

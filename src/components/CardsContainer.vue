@@ -26,6 +26,7 @@
     ">
         <div
         class="
+        column
         is-full-mobile
         is-half-tablet
         "
@@ -33,6 +34,7 @@
             :key="employee.name">
                 <CardEmployee
                 :name="employee.name || 'No name'"
+                :id="employee.id"
                 :role="employee.role || 'No role assigned'"
                 :location="employee.location || 'No location known'"
                 :stack="employee.stack || ''"

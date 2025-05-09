@@ -2,7 +2,6 @@
 import { defineProps, ref } from 'vue';
 import type { EmployeeType } from '../types';
 import GenericButton from './GenericButton.vue';
-// import { useToggleDescriptionBtn } from '../stores/useToggleDescriptionBtn';
 
 const toggleBtn = ref<boolean>(false);
 
@@ -10,9 +9,6 @@ const toggleBtnFun = () => toggleBtn.value = !toggleBtn.value
 
 const toggleBtnValue = () => toggleBtn.value
 defineProps<EmployeeType>();
-
-// const toggleBtnStore = useToggleDescriptionBtn();
-
 
 </script>
 
@@ -36,6 +32,7 @@ defineProps<EmployeeType>();
         has-text-centered-mobile
         md:w-1/2">
             <h3 class="is-size-3-mobile is-size-3-tablet has-text-weight-semibold">{{ name }}</h3>
+            <i><p class="is-size-4-mobile is-size-3-tablet has-text-grey-light">ID: {{ id }}</p></i>
             <p class="is-size-4-mobile is-size-3-tablet">{{ role }}</p>
             <p class="is-size-5-mobile is-size-4-tablet mb-5">{{location }}</p>
         </div>
