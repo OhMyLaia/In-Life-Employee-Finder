@@ -6,6 +6,7 @@ import { useStackListStore } from '../stores/useStackListStore';
 import useEmployeeStore from '../stores/useEmployeeListStore';
 import type { EmployeeType } from '../types';
 import GenericButton from '../components/GenericButton.vue';
+import GenericInfoSpan from '../components/GenericButton.vue';
 
 const stackListStore = useStackListStore();
 const employeeStore = useEmployeeStore();
@@ -16,10 +17,12 @@ const location = ref('');
 const newTechnology = ref('');
 const description = ref('');
 const nameToDelete = ref('');
+const isSubmitted = ref<true | false | null>(null);
 
 function addStackTechnology(newTech: string) {
     stackListStore.addTech(newTech);
     newTechnology.value = '';
+
 }
 
 function handleSubmit() {
@@ -30,12 +33,16 @@ function handleSubmit() {
         location: location.value,
         stack: stackListStore.stack,
         description: description.value,
-        picture: ''
+        picture: '/02.svg'
     };
 
     // hay un re-render, FIX
     // me manda la data pero son strings vacios ???
-    if (!employeeData) return alert(`Employee could not be added to database`);
+    if (!name.value || !role.value || !location.value || !description.value) {
+        console.log(`error, missing some required data`)
+        isSubmitted.value = false;
+        return
+    }
     employeeStore.addEmployee(employeeData)
 
     name.value = '';
@@ -44,6 +51,8 @@ function handleSubmit() {
     description.value = '';
     newTechnology.value = '';
     stackListStore.clearStack();
+    
+    isSubmitted.value = true;
 }
 
 
@@ -58,13 +67,15 @@ function deleteEmployee() {
 </script>
 
 <template>
-    <div class="container m-5 has-text-centered">
+    <div class="container m-5">
         <h3 class="
         is-size-3-mobile
         is-size-3-tablet
         has-text-weight-semibold
         has-text-black
-        m-5">
+        m-1
+        mb-3
+        mt-3">
             Add new employee</h3>
         <div>
             <form @submit.prevent="handleSubmit">
@@ -82,17 +93,35 @@ function deleteEmployee() {
                 </div>
 
                 <div class="has-text-left">
-                    <div class="field is-required">
-                        <label for="stack" class="label">Technology</label>
+                    <div class="field text-is-small">
+                        <label for="stack" class="label"></label>
                         <input id="stack" class="input" v-model="newTechnology" type="text"
-                            placeholder="Enter their stack (Vue, React, Node...)" />
+                            placeholder="Enter employee's stack and click 'add tech'" />
                     </div>
-                    <div class="control has-text-centered">
-                        <button type="button" @click="() => addStackTechnology(newTechnology)"
-                            class="button is-info is-light mb-4">
-                            Add tech to stack
-                        </button>
+                    <div class="control is-flex is-direction-column">
+                        <ul class="mt-3 ml-1">
+                            <li
+                                v-for="(tech, index) in stackListStore.stack"
+                                :key="tech"
+                                class="is-flex is-align-items-center
+                                mb-2
+                                ">
+                                <span class="mr-2">
+                                    {{ tech.charAt(0).toUpperCase() + tech.slice(1) }}
+                                </span>
+                                <button
+                                class="delete is-small has-background-red"
+                                @click="stackListStore.removeTech(index)"
+                                ></button>
+                            </li>
+                        </ul>
                     </div>
+                    <GenericButton
+                    type="button"
+                    :text="'Add tech'"
+                    :class="'button is-info is-light mb-5'"
+                    @click="() => addStackTechnology(newTechnology)"
+                    />
                 </div>
 
                 <div class="field is-required">
@@ -103,17 +132,31 @@ function deleteEmployee() {
                 <GenericButton
                 type="submit"
                 :text="'Submit'"
-                :class="'button is-info is-light m-4'"
-                @click="handleSubmit"
+                :class="'button is-info is-light'"
                 />
             </form>
+
+            <p v-if="isSubmitted === true">
+                <GenericInfoSpan
+                :text="'Employee created successfully!'"
+                class="has-text-info mt-2" />
+            </p>
+
+            <p v-if="isSubmitted === false">
+                <GenericInfoSpan
+                :text="'Something went wrong, try again.'"
+                class="has-text-info mt-2" />
+            </p>
+
         </div>
         <h3 class="
             is-size-3-mobile
             is-size-3-tablet
             has-text-weight-semibold
             has-text-black
-            m-5">
+            m-1
+            mb-3
+            mt-6">
             Delete employee</h3>
 
         <div class="field is-required">
@@ -128,9 +171,12 @@ function deleteEmployee() {
         </div>
 
         <div class="control">
-        <button class="button is-danger" type="button" @click="deleteEmployee">
-            Delete
-        </button>
+            <GenericButton
+            type="submit"
+            :text="'Delete'"
+            :class="'button is-danger mb-6'"
+            @click="deleteEmployee"
+            />
         </div>
     </div>
 

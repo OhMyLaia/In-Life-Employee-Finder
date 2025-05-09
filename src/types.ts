@@ -11,7 +11,7 @@ export type EmployeeType = {
 export type GenericButtonProps = {
     text: string,
     class: string,
-    onClick: () => void,
+    onClick?: () => void,
     toggleBtn?: () => void
 }
 
