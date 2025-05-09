@@ -22,12 +22,13 @@
     <div class="
     columns
     is-multiline
+    mx-auto
     ">
         <div
         class="
-        column
         is-full-mobile
-        is-half-tablet"
+        is-half-tablet
+        "
         v-for="employee in filteredEmployees"
             :key="employee.name">
                 <CardEmployee
@@ -45,3 +46,12 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+
+* {
+    outline-color: red;
+    outline-width: 2px;
+}
+
+</style>
