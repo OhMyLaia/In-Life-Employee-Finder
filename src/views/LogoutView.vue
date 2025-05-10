@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { getAuth, signOut } from 'firebase/auth';
+import {signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 import GenericButton from '../components/GenericButton.vue';
 
 const router = useRouter();
 
 const logoutFunction = async () => {
-    const auth = getAuth();
     try {
         await signOut(auth);
         console.log('User signed out');

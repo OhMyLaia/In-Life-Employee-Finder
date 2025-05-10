@@ -1,7 +1,8 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import type { Ref } from 'vue';
-    import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+    import { createUserWithEmailAndPassword } from 'firebase/auth';
+    import { auth } from '../../firebase';
     import { useRouter } from 'vue-router';
     import { SignStatus, AuthError } from '../../types';
     import { showStatusMessage, showAuthMessage, mapFirebaseError } from '../../utils/auth-utils';
@@ -14,7 +15,7 @@
     const router = useRouter();
 
     const handleRegisterUser = async () => {
-    await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    await createUserWithEmailAndPassword(auth, email.value, password.value)
         .then(() => {
             showStatusMessage(SignStatus.success, router);
             status.value = SignStatus.success;

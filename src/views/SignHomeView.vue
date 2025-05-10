@@ -2,7 +2,8 @@
     import { ref } from 'vue';
     import type { Ref } from 'vue';
     import { mapFirebaseError, showStatusMessage, showAuthMessage } from '../utils/auth-utils';
-    import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+    import { auth } from '../firebase';
+    import { signInWithEmailAndPassword } from 'firebase/auth';
     import { useRouter } from 'vue-router';
     import { SignStatus } from '../types';
     import { AuthError } from '../types'
@@ -18,7 +19,7 @@
     const handleSignInUser = async () => {
 
     // firebase is returning a promise
-    await signInWithEmailAndPassword(getAuth(), email.value, password.value)
+    await signInWithEmailAndPassword(auth, email.value, password.value)
         .then(() => {
             showStatusMessage(SignStatus.success, router);
             status.value = SignStatus.success;
