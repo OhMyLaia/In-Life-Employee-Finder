@@ -16,9 +16,3 @@ defineProps<{
         <use :xlink:href="`${src || '/icons/bds-icons.min.svg'}#${icon}`" />
     </svg>
 </template>
-
-<!-- <style scoped>
-.icon {
-    fill: ;
-}
-</style> -->

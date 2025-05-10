@@ -7,6 +7,7 @@
     import { SignStatus } from '../types';
     import { AuthError } from '../types'
     import GenericSignBox from './firebase-auth/GenericSignBox.vue';
+    import InLifeImage from '../../public/01.svg'
 
     const email: Ref<string> = ref('');
     const password: Ref<string> = ref('');
@@ -35,15 +36,15 @@
 </script>
 
 <template>
-    <div class="has-text-centered">
+    <div class="is-flex is-flex-direction-column is-align-items-center has-text-centered">
         <h1 class="is-size-4-mobile
-            is-size-2-tablet
+            is-size-1-tablet
             has-text-black
             has-text-weight-bold
             mt-6
             mb-3
             ">IN LIFE PROJECTS</h1>
-            <h3 class="is-size-4">Login</h3>
+            <h3 class="is-size-4 is-size-3-tablet">Login</h3>
         <GenericSignBox
         :email="email"
         :password="password"
@@ -54,8 +55,9 @@
         :showStatusMessage="showStatusMessage(SignStatus.success, router)"
         :showAuthMessage="showAuthMessage(error)"
         />
-        <p class="has-text-black">
+        <p class="has-text-black is-size-4-tablet">
             Don't have an account? <RouterLink to="/register">Register</RouterLink>
         </p>
+        <img class="image w-3/4 is-rounded" :src="InLifeImage">
     </div>
 </template>

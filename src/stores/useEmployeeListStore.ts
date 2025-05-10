@@ -2,7 +2,6 @@ import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import { roleType, type EmployeeType } from '../types';
 import axios from 'axios';
-import EmployeeList from "../data/db.json";
 
 const useEmployeeStore = defineStore('employeeStore', () => {
 
@@ -72,42 +71,19 @@ const useEmployeeStore = defineStore('employeeStore', () => {
     
     }
 
-    // const deleteEmployee = (id: string) => {
-
-    //     try {
-    //         const employeeIndex: number = employees.value.findIndex(emp => {
-    //             console.log(`cleaned database name -> ${emp.id} === ${id}`)
-    //             return String(emp.id) === String(id)
-    //         })
-    
-    //         if (employeeIndex !== -1) employees.value.splice(employeeIndex, 1);
-    //         else console.log(`could not find index`);
-
-    //     } catch (error) {
-    //         console.log(`could not find employee, ${error}`)
-    //     }
-    // }
-
-    const deleteEmployee = (id: string) => {
+    const deleteEmployee = async (id: string) => {
+        const cleanID = id.toLowerCase();
+        const url = `http://localhost:3000/employees/${cleanID}`;
         try {
-            console.log(`Attempting to delete employee with id: ${id}`);
-            const employeeIndex: number = employees.value.findIndex(emp => {
-                console.log(`emp.id: ${emp.id}, comparing with id: ${id}`);
-                return String(emp.id) === String(id);
-            });
-    
-            if (employeeIndex !== -1) {
-                employees.value.splice(employeeIndex, 1);
-            } else {
-                console.log(`Employee with id ${id} not found.`);
-            }
+            await axios.delete(url);
+            console.log(`Attempting to delete employee with - id: ${id} - on backend`);
+
         } catch (error) {
             console.log(`Error deleting employee: ${error}`);
         }
     }
 
     const addEmployee = (newEmployee: EmployeeType) => {
-        // employees.value.push(newEmployee);
         const url = "http://localhost:3000/employees/";
         axios.post(url, newEmployee)
     }

@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from 'vue-router';
-import GenericSvg from './GenericSvg.vue';
+    import { RouterLink, useRoute } from 'vue-router';
+    import GenericSvg from './GenericSvg.vue';
 
-const route = useRoute();
+    const route = useRoute();
 
-const isActiveLink = (routePath: string): boolean => {
-    return route.path === routePath;
-}
-
+    const isActiveLink = (routePath: string): boolean => {
+        return route.path === routePath;
+    }
 </script>
 
 <template>
@@ -16,9 +15,7 @@ const isActiveLink = (routePath: string): boolean => {
     p-3
     md:p-6
     ">
-
         <div class="container">
-
             <nav v-if="route.path !== '/login' && route.path !== '/register' && route.path !== '/'"
                 class="columns is-vcentered is-mobile m-0">
                 <div class="column">
@@ -76,7 +73,6 @@ const isActiveLink = (routePath: string): boolean => {
                             ">
                                     Staff-manager</span>
                             </RouterLink>
-
                         </div>
                     </div>
                 </div>
@@ -86,19 +82,14 @@ const isActiveLink = (routePath: string): boolean => {
 </template>
 
 <style lang="css" scoped>
-.dropdown-menu.open-left {
-    left: auto;
-    right: 0;
-    transform-origin: top right;
-}
+    .dropdown-menu.open-left {
+        left: auto;
+        right: 0;
+        transform-origin: top right;
+    }
 
-.body {
-    max-width: 100vw;
-    overflow: hidden;
-}
-
-/* * {
-    outline: 1px solid red;
-}
- */
+    .body {
+        max-width: 100vw;
+        overflow: hidden;
+    }
 </style>

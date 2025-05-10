@@ -1,27 +1,21 @@
 <script setup lang="ts">
-// import { ref } from 'vue';
-// import type { Ref } from 'vue';
-import GenericButton from '../../components/GenericButton.vue';
-// import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import GenericInfoSpan from '../../components/GenericButton.vue';
-// import { useRouter } from 'vue-router';
-import { SignStatus } from '../../types';
-// import { AuthError } from '../../types';
+    import GenericButton from '../../components/GenericButton.vue';
+    import GenericInfoSpan from '../../components/GenericButton.vue';
+    import { SignStatus } from '../../types';
 
-const props = defineProps<{
-    email: string;
-    password: string;
-    handleAuth: () => void;
-    status: SignStatus;
-    showStatusMessage: string;
-    showAuthMessage: string;
-}>();
+    const props = defineProps<{
+        email: string;
+        password: string;
+        handleAuth: () => void;
+        status: SignStatus;
+        showStatusMessage: string;
+        showAuthMessage: string;
+    }>();
 
-const emit = defineEmits<{
-    (event: 'update:email', value: string): void;
-    (event: 'update:password', value: string): void;
-}>()
-
+    const emit = defineEmits<{
+        (event: 'update:email', value: string): void;
+        (event: 'update:password', value: string): void;
+    }>()
 </script>
 
 <template>
@@ -34,7 +28,6 @@ const emit = defineEmits<{
             :value="props.email"
             @input="emit('update:email', ($event.target as HTMLInputElement)?.value || '')"
             >
-
             <input
             class="m-2 bg-blue-200 rounded"
             type="password"
@@ -42,32 +35,13 @@ const emit = defineEmits<{
             :value="props.password"
             @input="emit('update:password', ($event.target as HTMLInputElement)?.value || '')"
             >
-
-
             <GenericButton :text="'Submit'" :class="'button is-info m-2'" @click="props.handleAuth" />
-
             <p v-if="status === SignStatus.success">
                 <GenericInfoSpan :text="props.showStatusMessage" class="has-text-info mt-2" />
             </p>
-
             <p v-if="status === SignStatus.failure">
                 <GenericInfoSpan :text="props.showAuthMessage" class="has-text-danger mt-2" />
             </p>
         </div>
-
     </div>
 </template>
-
-
-<!-- <p v-if="status === SignStatus.success">
-    <GenericInfoSpan
-    :text="showStatusMessage(SignStatus.success)"
-    class="has-text-info mt-2" />
-</p>
-
-<p v-if="status === SignStatus.failure">
-    <GenericInfoSpan
-    :text="showAuthMessage(error)"
-    class="has-text-danger mt-2"
-    />
-</p> -->

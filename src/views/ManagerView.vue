@@ -1,68 +1,63 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-// store de tech para añadir al array
-import { useStackListStore } from '../stores/useStackListStore';
-// store de data.json
-import useEmployeeStore from '../stores/useEmployeeListStore';
-import type { EmployeeType } from '../types';
-import GenericButton from '../components/GenericButton.vue';
-import GenericInfoSpan from '../components/GenericInfoSpan.vue';
+    import { ref, onMounted } from 'vue';
+    // store de tech para añadir al array
+    import { useStackListStore } from '../stores/useStackListStore';
+    // store de data.json
+    import useEmployeeStore from '../stores/useEmployeeListStore';
+    import type { EmployeeType } from '../types';
+    import GenericButton from '../components/GenericButton.vue';
+    import GenericInfoSpan from '../components/GenericInfoSpan.vue';
 
-const stackListStore = useStackListStore();
-const employeeStore = useEmployeeStore();
+    const stackListStore = useStackListStore();
+    const employeeStore = useEmployeeStore();
 
-const name = ref('');
-// const id = ref('');
-const role = ref('');
-const location = ref('');
-const newTechnology = ref('');
-const description = ref('');
-const idToDelete = ref('');
-const isSubmitted = ref<true | false | null>(null);
+    const name = ref('');
+    // const id = ref('');
+    const role = ref('');
+    const location = ref('');
+    const newTechnology = ref('');
+    const description = ref('');
+    const idToDelete = ref('');
+    const isSubmittedAdd = ref<true | false | null>(null);
+    const isSubmittedDelete = ref<true | false | null>(null);
 
-function addStackTechnology(newTech: string) {
-    stackListStore.addTech(newTech);
-    newTechnology.value = '';
-}
+    onMounted(() => {
+        employeeStore.fetchEmployees();
+    });
 
-function handleSubmit() {
-
-    const employeeData: EmployeeType = {
-        name: name.value,
-        id: String(Date.now()),
-        role: role.value,
-        location: location.value,
-        stack: stackListStore.stack,
-        description: description.value,
-        picture: '/02.svg'
-    };
-
-    // hay un re-render, FIX
-    // me manda la data pero son strings vacios ???
-    if (!name.value || !role.value || !location.value || !description.value) {
-        console.log(`error, missing some required data`)
-        isSubmitted.value = false;
-        return
+    function addStackTechnology(newTech: string) {
+        stackListStore.addTech(newTech);
+        newTechnology.value = '';
     }
-    employeeStore.addEmployee(employeeData)
 
-    name.value = '';
-    role.value = '';
-    location.value = '';
-    description.value = '';
-    newTechnology.value = '';
-    stackListStore.clearStack();
-    
-    isSubmitted.value = true;
-}
+    function handleSubmit() {
 
+        const employeeData: EmployeeType = {
+            name: name.value,
+            id: String(Date.now()),
+            role: role.value,
+            location: location.value,
+            stack: stackListStore.stack,
+            description: description.value,
+            picture: '/02.svg'
+        };
 
-// function deleteEmployee(idToDelete: string) {
-//     if (!idToDelete) return alert(`Employee could not be deleted from database`);
-//     else employeeStore.deleteEmployee(idToDelete.value);
-//     console.log(`Deleting employee with ID: ${idToDelete.value}`);
-//     idToDelete.value = '';
-// }
+        if (!name.value || !role.value || !location.value || !description.value) {
+            console.log(`error, missing some required data`)
+            isSubmittedAdd.value = false;
+            return
+        }
+        employeeStore.addEmployee(employeeData)
+
+        name.value = '';
+        role.value = '';
+        location.value = '';
+        description.value = '';
+        newTechnology.value = '';
+        stackListStore.clearStack();
+        
+        isSubmittedAdd.value = true;
+    }
 </script>
 
 <template>
@@ -135,13 +130,13 @@ function handleSubmit() {
                 />
             </form>
 
-            <p v-if="isSubmitted === true">
+            <p v-if="isSubmittedAdd === true">
                 <GenericInfoSpan
                 :text="'Employee created successfully!'"
                 customClass="has-text-info mt-2" />
             </p>
 
-            <p v-if="isSubmitted === false">
+            <p v-if="isSubmittedAdd === false">
                 <GenericInfoSpan
                 :text="'Something went wrong, try again.'"
                 customClass="has-text-info mt-2" />
@@ -171,18 +166,28 @@ function handleSubmit() {
 
         <div class="control">
             <GenericButton
-            type="submit"
+            type="button"
             :text="'Delete'"
             :class="'button is-danger mb-6'"
-            @click="{
-                if (!idToDelete) {
-                    console.log('Please provide a valid ID');
-                }
-                employeeStore.deleteEmployee(idToDelete);
-                }"
+            @click="{if (!idToDelete) {
+                        console.log('Please provide a valid ID');
+                    }
+                    isSubmittedDelete === true;
+                    employeeStore.deleteEmployee(idToDelete);
+                    }"
             />
+            <p v-if="isSubmittedDelete === true">
+                <GenericInfoSpan
+                :text="'Employee deleted from the database.'"
+                customClass="has-text-info mt-2"
+                />
+            </p>
+            <p v-if="isSubmittedDelete === false">
+                <GenericInfoSpan
+                :text="'Error, could not delete employee. Please, try again.'"
+                customClass="has-text-info mt-2"
+                />
+            </p>
         </div>
     </div>
-
-
 </template>

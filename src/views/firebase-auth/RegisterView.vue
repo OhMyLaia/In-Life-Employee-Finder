@@ -1,36 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Ref } from 'vue';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useRouter } from 'vue-router';
-import { SignStatus, AuthError } from '../../types';
-import { showStatusMessage, showAuthMessage, mapFirebaseError } from '../../utils/auth-utils';
-import GenericSignBox from './GenericSignBox.vue';
+    import { ref } from 'vue';
+    import type { Ref } from 'vue';
+    import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+    import { useRouter } from 'vue-router';
+    import { SignStatus, AuthError } from '../../types';
+    import { showStatusMessage, showAuthMessage, mapFirebaseError } from '../../utils/auth-utils';
+    import GenericSignBox from './GenericSignBox.vue';
 
-const email: Ref<string> = ref('');
-const password: Ref<string> = ref('');
-const status: Ref<SignStatus> = ref(SignStatus.pending);
-const error: Ref<AuthError> = ref(AuthError.unknown);
-const router = useRouter();
+    const email: Ref<string> = ref('');
+    const password: Ref<string> = ref('');
+    const status: Ref<SignStatus> = ref(SignStatus.pending);
+    const error: Ref<AuthError> = ref(AuthError.unknown);
+    const router = useRouter();
 
-const handleRegisterUser = async () => {
-
-// firebase is returning a promise
-await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then(() => {
-        showStatusMessage(SignStatus.success, router);
-        status.value = SignStatus.success;
-        console.log(`user registered successfully`);
-        setTimeout(() => router.push('/home'), 1500)
-    })
-    .catch((err) => {
-        const mappedError = mapFirebaseError(err.code)
-        showAuthMessage(mappedError);
-        error.value = mappedError;
-        status.value = SignStatus.failure;
-        console.error(`error registering user, ${err}`);
-    })
-}
+    const handleRegisterUser = async () => {
+    await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+        .then(() => {
+            showStatusMessage(SignStatus.success, router);
+            status.value = SignStatus.success;
+            console.log(`user registered successfully`);
+            setTimeout(() => router.push('/home'), 1500)
+        })
+        .catch((err) => {
+            const mappedError = mapFirebaseError(err.code)
+            showAuthMessage(mappedError);
+            error.value = mappedError;
+            status.value = SignStatus.failure;
+            console.error(`error registering user, ${err}`);
+        })
+    }
 </script>
 
 <template>
@@ -43,7 +41,6 @@ await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
             mb-3
             ">IN LIFE PROJECTS</h1>
         <h3 class="is-size-4">Register</h3>
-        <!-- <div class="column is-flex is-flex-direction-column m-2"> -->
             <GenericSignBox
             :email="email"
             :password="password"
@@ -60,6 +57,5 @@ await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
             <p class="has-text-black">
             Already have an account? <RouterLink to="/">Login</RouterLink>
             </p>
-        <!-- </div> -->
     </div>
 </template>
