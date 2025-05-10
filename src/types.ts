@@ -1,4 +1,5 @@
 export type EmployeeType = {
+    id: string
     name: string,
     role: string,
     location: string,
@@ -8,14 +9,14 @@ export type EmployeeType = {
 
 }
 
-export type GenericButtonType = {
+export type GenericButtonProps = {
     text: string,
     class: string,
     onClick?: () => void,
     toggleBtn?: () => void
 }
 
-export type CardPropsType = EmployeeType & GenericButtonType
+export type CardPropsType = EmployeeType & GenericButtonProps
 
 export enum roleType {
     all = "all",
@@ -31,4 +32,22 @@ export enum roleType {
 
 export type CardsContainerPropsType = {
     filterByRole?: roleType;
+}
+
+export enum SignStatus {
+    success = 'success',
+    failure = 'failure',
+    pending = 'pending'
+}
+
+export enum AuthError {
+    invalidEmail = 'invalid_email',
+    invalidPassword = 'invalid_password',
+    userNotFound = 'userNotFound',
+    unknown = 'unknown'
+}
+
+export type infoSpanProps = {
+    text: string,
+    customClass: string
 }

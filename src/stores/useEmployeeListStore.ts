@@ -1,49 +1,99 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import type { EmployeeType } from '../types';
-import EmployeeList from "../data/employeeList.json"
+import { roleType, type EmployeeType } from '../types';
+import axios from 'axios';
 
-export const useEmployeeStore = defineStore('employeeStore', () => {
+const useEmployeeStore = defineStore('employeeStore', () => {
 
-    const cleanInput = (input: string) =>
-    input
-    .trim()
-    .replace(/\s+/g, '')
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
+    const employees = ref<EmployeeType[]>([]);
 
-    const employees = ref<EmployeeType[]>(EmployeeList.employees.map(emp => ({
-        name: emp.eName,
-        role: emp.eRole,
-        location: emp.eLocation,
-        stack: emp.eStack,
-        description: emp.eDescription,
-        picture: emp.ePicture
-    })));
+    const fetchEmployees = async () => {
+
+        const url = "http://localhost:3000/employees/";
+        try {
+            await axios.get(url)
+            .then(response => {
+            employees.value = response.data});
+        console.log(`tried and got employees.value from store = ${employees.value.map(emp => emp.id)}`)
+
+        } catch (error) {
+            console.log("Error fetching data: ", error)
+        }
+    }
+
+    const cleanInput = (input: string) => {
+        if (!input) return ""
+        else return input
+        .trim()
+        .replace(/\s+/g, '')
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        }
+
+    //     const employees = ref<EmployeeType[]>(EmployeeList.employees.map(emp => ({
+    //     name: emp.eName,
+    //     role: emp.eRole,
+    //     location: emp.eLocation,
+    //     stack: emp.eStack,
+    //     description: emp.eDescription,
+    //     picture: emp.ePicture
+    // })));
 
     const getEmployeeList = computed(() => employees.value)
 
     const findEmployee = (index: number) => employees.value[index]
 
-    const deleteEmployee = (name: string) => {
-
-        try {
-            const employeeIndex: number = employees.value.findIndex(emp => cleanInput(emp.name) === cleanInput(name))
-            console.log("emp.name ->", employeeIndex)
+    const filterEmployees = (roleParam: roleType) => {
     
-            if (employeeIndex !== -1) employees.value.splice(employeeIndex, 1);
-            else console.log(`could not find index`);
-            
+        try {
+            if (employees.value.length === 0) {
+                console.log(`employees.value.length = ${employees.value.length}`)
+                return employees.value;
+            }
+
+            if (roleParam === roleType.all) {
+                console.log(`employees.value.length = ${employees.value.length}`)
+                return employees.value;
+        
+            } else {
+                const cleanRole = cleanInput(roleParam)
+                console.log(`cleanRole = ${cleanRole}`)
+                return employees.value.filter(employee => (
+                    cleanInput(employee.role)
+                    .includes(cleanRole)
+                ))
+            }
+        } catch (error) {
+            throw new Error (`could not find any match to filter employees, ${error}`)
+        }
+    
+    }
+
+    const deleteEmployee = async (id: string) => {
+        const cleanID = id.toLowerCase();
+        const url = `http://localhost:3000/employees/${cleanID}`;
+        try {
+            await axios.delete(url);
+            console.log(`Attempting to delete employee with - id: ${id} - on backend`);
+            return true;
 
         } catch (error) {
-            console.log(`could not find employee, ${error}`)
+            console.log(`Error deleting employee: ${error}`);
+            return false;
         }
     }
 
     
     const addEmployee = (newEmployee: EmployeeType) => {
-        employees.value.push(newEmployee);
+        const url = "http://localhost:3000/employees/";
+        try {
+            axios.post(url, newEmployee);
+            return true;
+        } catch (error) {
+            console.log(`Error adding employee: ${error}`);
+            return false;
+        }
     }
 
     const updateEmployee = (newData: EmployeeType) => {
@@ -64,10 +114,14 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
 
     return {
         getEmployeeList,
+        fetchEmployees,
         findEmployee,
+        filterEmployees,
         deleteEmployee,
         addEmployee,
         updateEmployee,
         cleanInput
     }
 })
+
+export default useEmployeeStore;

@@ -1,49 +1,59 @@
 <script setup lang="ts">
-import CardEmployee from './CardEmployee.vue';
-import { computed } from 'vue';
-import type { EmployeeType, CardsContainerPropsType } from '../types';
-import { useEmployeeStore } from '../stores/useEmployeeListStore';
+    import CardEmployee from './CardEmployee.vue';
+    import { computed, onMounted } from 'vue';
+    import { type CardsContainerPropsType, roleType } from '../types';
+    import useEmployeeStore from '../stores/useEmployeeListStore';
 
-const employeeStore = useEmployeeStore();
-// const selectedRole = ref<roleType>(roleType.all);
-const props = defineProps<CardsContainerPropsType>();
+    const employeeStore = useEmployeeStore();
 
-const filterEmployees = computed(() => {
+    const props = defineProps<CardsContainerPropsType>();
 
-    let filteredEmployees: EmployeeType[] = []
+    onMounted(() => {
+        employeeStore.fetchEmployees();
+    });
 
-    if (props.filterByRole === "all") {
-        filteredEmployees = employeeStore.getEmployeeList
-    } else {
-        filteredEmployees = employeeStore.getEmployeeList
-        .filter(employee => employeeStore
-        .cleanInput(employee.role)
-        .includes(props.filterByRole ?? ''));
-    }
-    return filteredEmployees;
-})
-
+    const filteredEmployees = computed(() => {
+        const role = props.filterByRole ?? roleType.all;
+        return employeeStore.filterEmployees(role);
+    })
 </script>
 
 <template>
     <div class="
     columns
     is-multiline
+    mx-auto
     ">
-        <div class="
+        <div
+        class="
         column
         is-full-mobile
-        is-half-tablet"
-        v-for="employee in filterEmployees"
+        is-half-tablet
+        "
+        v-for="employee in filteredEmployees"
             :key="employee.name">
                 <CardEmployee
-                :name="employee.name"
-                :role="employee.role"
-                :location="employee.location"
-                :stack="employee.stack"
-                :description="employee.description"
-                :picture="employee.picture"
+                :name="employee.name || 'No name'"
+                :id="employee.id"
+                :role="employee.role || 'No role assigned'"
+                :location="employee.location || 'No location known'"
+                :stack="employee.stack || ''"
+                :description="employee.description || '...'"
+                :picture="employee.picture || '...'"
                 />
+        </div>
+        <div class="column has-text-centered is-size-4"
+        v-if="employeeStore.getEmployeeList.length === 0">
+            Loading employees...
         </div>
     </div>
 </template>
+
+<style scoped>
+
+* {
+    outline-color: red;
+    outline-width: 2px;
+}
+
+</style>

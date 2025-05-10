@@ -1,76 +1,91 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-// store de tech para añadir al array
-import { useStackListStore } from '../stores/useStackListStore';
-// store de data.json
-import { useEmployeeStore } from '../stores/useEmployeeListStore';
-import type { EmployeeType } from '../types';
-import GenericButton from '../components/GenericButton.vue';
+    import { ref, onMounted } from 'vue';
+    import { useStackListStore } from '../stores/useStackListStore';
+    import useEmployeeStore from '../stores/useEmployeeListStore';
+    import type { EmployeeType } from '../types';
+    import GenericButton from '../components/GenericButton.vue';
 
-const stackListStore = useStackListStore();
-const employeeStore = useEmployeeStore();
+    const stackListStore = useStackListStore();
+    const employeeStore = useEmployeeStore();
 
-const name = ref('');
-const role = ref('');
-const location = ref('');
-const newTechnology = ref('');
-const description = ref('');
-const nameToDelete = ref('');
+    const name = ref('');
+    const role = ref('');
+    const location = ref('');
+    const newTechnology = ref('');
+    const description = ref('');
+    const idToDelete = ref('');
 
-const message = ref('')
+    onMounted(() => {
+        employeeStore.fetchEmployees();
+    });
 
-// function addStackTechnology(newTech: Ref<string> | null) {
-//     if (!newTech) return null
-//     stackListStore.addTech(newTech.value);
-//     newTechnology.value = '';
-// }
+    function addStackTechnology(newTech: string) {
+        stackListStore.addTech(newTech);
+        newTechnology.value = '';
+    }
 
-function handleSubmit() {
+    async function handleSubmit() {
+        const employeeData: EmployeeType = {
+            name: name.value,
+            id: String(Date.now()),
+            role: role.value,
+            location: location.value,
+            stack: stackListStore.stack,
+            description: description.value,
+            picture: '/02.svg'
+        };
 
-    const employeeData: EmployeeType = {
-        name: name.value,
-        role: role.value,
-        location: location.value,
-        stack: [],
-        description: description.value,
-        picture: '/03.svg'
-    };
+        if (!name.value || !role.value || !location.value || !description.value) {
+            console.log(`error, missing some required data`);
+            return;
+        }
 
-    if (!employeeData) return message.value =`Employee could not be added to database`;
-    if (!name.value || !role.value || !location.value || !description.value) return `missing data`
-    employeeStore.addEmployee(employeeData);
-    message.value =`Employee successfully added to database!`;
-    
+        try {
+            await employeeStore.addEmployee(employeeData);
+            alert(`Employee ${name.value} added successfully!`);
 
-    name.value = '';
-    role.value = '';
-    location.value = '';
-    description.value = '';
-    newTechnology.value = '';
-    stackListStore.clearStack();
-}
+        } catch (error) {
+            console.error("Error in handleSubmit:", error);
+        }
+        
+        name.value = '';
+        role.value = '';
+        location.value = '';
+        description.value = '';
+        newTechnology.value = '';
+        stackListStore.clearStack();
+    }
 
 
-function deleteEmployee() {
-    let cleanName = employeeStore.cleanInput(nameToDelete.value)
-    if (!cleanName) return message.value = `Employee could not be deleted from database`;
-    employeeStore.deleteEmployee(cleanName);
-    console.log("Trying to delete:", cleanName);
-    message.value =`Employee successfully deleted from database!`;
-    nameToDelete.value = '';
+    async function handleDelete() {
 
-}
+        if (!idToDelete.value) {
+            console.log('Please provide a valid ID');
+            return;
+        }
 
+        const confirmed = window.confirm(`Are you sure you want to delete employee ID ${idToDelete.value}?`);
+        if (!confirmed) return;
+        try {
+            await employeeStore.deleteEmployee(idToDelete.value);
+            idToDelete.value = '';
+        } catch (error) {
+
+            console.log('Failed to delete:', error);
+        }
+    }
 </script>
 
 <template>
-    <div class="container m-5 has-text-centered">
+    <div class="container m-5">
         <h3 class="
         is-size-3-mobile
         is-size-3-tablet
         has-text-weight-semibold
         has-text-black
-        m-5">
+        m-1
+        mb-3
+        mt-3">
             Add new employee</h3>
         <div>
             <form @submit.prevent="handleSubmit">
@@ -86,31 +101,34 @@ function deleteEmployee() {
                     <label for="location" class="label"></label>
                     <input id="location" class="input" type="text" placeholder="Location" v-model="location">
                 </div>
-
                 <div class="has-text-left">
-                    <!-- <div class="field is-required">
-                        <label for="stack" class="label">Technology</label>
+                    <div class="field text-is-small">
+                        <label for="stack" class="label"></label>
                         <input id="stack" class="input" v-model="newTechnology" type="text"
-                            placeholder="Enter their stack (Vue, React, Node...)" />
-                    </div> -->
-                    <!-- <div class="control has-text-centered">
-                        <button type="button" @click="() => addStackTechnology(newTechnology | null)"
-                            class="button is-info is-light mb-4">
-                            Add tech to stack
-                        </button>
-                    </div> -->
-    
-                    <div class="field is-required">
-                        <label for="textfield" class="label"></label>
-                        <textarea id="textfield" class="textarea" placeholder="Description"
-                        v-model="description"></textarea>
+                            placeholder="Enter employee's stack and click 'add tech'" />
                     </div>
+                    <div class="control is-flex is-direction-column">
+                        <ul class="mt-3 ml-1">
+                            <li v-for="(tech, index) in stackListStore.stack"
+                            :key="tech"
+                            class="is-flex is-align-items-center mb-2">
+                                <span class="mr-2">
+                                    {{ tech.charAt(0).toUpperCase() + tech.slice(1) }}
+                                </span>
+                                <button class="delete is-small has-background-red"
+                                    @click="stackListStore.removeTech(index)"></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <GenericButton type="button" :text="'Add tech'" :class="'button is-info is-light mb-5'"
+                        @click="() => addStackTechnology(newTechnology)" />
                 </div>
-                <GenericButton
-                type="submit"
-                :text="'Submit'"
-                :class="'button is-info is-light m-4'"/>
-                <p v-if="message" class="notification text-black mt-4">{{ message }}</p>
+                <div class="field is-required">
+                    <label for="textfield" class="label"></label>
+                    <textarea id="textfield" class="textarea" placeholder="Description"
+                        v-model="description"></textarea>
+                </div>
+                <GenericButton type="submit" :text="'Submit'" :class="'button is-info is-light'" />
             </form>
         </div>
         <h3 class="
@@ -118,26 +136,19 @@ function deleteEmployee() {
             is-size-3-tablet
             has-text-weight-semibold
             has-text-black
-            m-5">
+            m-1
+            mb-3
+            mt-6">
             Delete employee</h3>
 
         <div class="field is-required">
-        <label for="delete-name" class="label"></label>
-        <input
-            id="delete-name"
-            class="input"
-            type="text"
-            placeholder="Enter employee's full name to delete"
-            v-model="nameToDelete"
-        />
+            <label for="delete-name" class="label">ID</label>
+            <input id="delete-id" class="input" type="text" placeholder="Enter employee id to delete"
+                v-model="idToDelete" />
         </div>
-
-        <div class="control">
-        <button class="button is-danger" type="button" @click="deleteEmployee">
-            Delete
-        </button>
+        <GenericButton type="button"
+        :text="'Delete'"
+        :class="'button is-danger mb-3'"
+        @click="handleDelete" />
         </div>
-    </div>
-
-
 </template>

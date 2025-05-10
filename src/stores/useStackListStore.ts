@@ -7,9 +7,9 @@ export const useStackListStore = defineStore('stackListStore', () => {
 
     const getStackList = computed(() => stack.value)
 
-    const addTech = (newTech: string) => {
-        stack.value.push(newTech);
-    }
+    const addTech = (newTech: string) => stack.value.push(newTech)
+
+    const removeTech = (index: number) => stack.value.splice(index, 1);
 
     const clearStack = () => stack.value = []
 
@@ -17,6 +17,7 @@ export const useStackListStore = defineStore('stackListStore', () => {
         stack,
         getStackList,
         addTech,
+        removeTech,
         clearStack
     }
 })
