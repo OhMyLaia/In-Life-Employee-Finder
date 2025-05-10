@@ -8,9 +8,6 @@ import 'vue-toastification/dist/index.css';
 import Router from './router'
 import App from './App.vue';
 import "@/assets/biings-ds/build/bds.css";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../src/firebase';
-
 const app = createApp(App);
 const pinia = createPinia();
 

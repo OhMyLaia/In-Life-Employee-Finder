@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GenericButtonType } from '../types'; 
+import type { GenericButtonProps } from '../types'; 
 
 const props: GenericButtonProps = defineProps<{
     text: string;
