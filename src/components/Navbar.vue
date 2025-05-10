@@ -46,10 +46,10 @@
                                     :
                                     'has-text-black']" class="dropdown-item">
                                 <span class="
-                            is-size-6-mobile
-                            is-size-3-tablet
-                            ">
-                                    Home</span>
+                                is-size-6-mobile
+                                is-size-3-tablet
+                                ">
+                                Home</span>
                             </RouterLink>
                             <RouterLink to="/finder" :class="[
                                 isActiveLink('/finder') ?
@@ -57,10 +57,10 @@
                                     :
                                     'has-text-black']" class="dropdown-item">
                                 <span class="
-                            is-size-6-mobile
-                            is-size-3-tablet
-                            ">
-                                    Finder</span>
+                                is-size-6-mobile
+                                is-size-3-tablet
+                                ">
+                                Finder</span>
                             </RouterLink>
                             <RouterLink to="/staff-manager" :class="[
                                 isActiveLink('/staff-manager') ?
@@ -68,10 +68,21 @@
                                     :
                                     'has-text-black']" class="dropdown-item">
                                 <span class="
-                            is-size-6-mobile
-                            is-size-3-tablet
-                            ">
-                                    Staff-manager</span>
+                                is-size-6-mobile
+                                is-size-3-tablet
+                                ">
+                                Staff-manager</span>
+                            </RouterLink>
+                            <RouterLink to="/logout" :class="[
+                                isActiveLink('/logout') ?
+                                    'has-text-weight-bold has-text-black'
+                                    :
+                                    'has-text-black']" class="dropdown-item">
+                                <span class="
+                                is-size-6-mobile
+                                is-size-3-tablet
+                                ">
+                                Log out</span>
                             </RouterLink>
                         </div>
                     </div>

@@ -47,12 +47,11 @@ const useEmployeeStore = defineStore('employeeStore', () => {
     const filterEmployees = (roleParam: roleType) => {
     
         try {
-    
-            // if (employees.value.length === 0) {
-            //     console.error(`could not filter employees, employees.value.length = ${employees.value.length}`);
-            //     return
-            // }
-    
+            if (employees.value.length === 0) {
+                console.log(`employees.value.length = ${employees.value.length}`)
+                return employees.value;
+            }
+
             if (roleParam === roleType.all) {
                 console.log(`employees.value.length = ${employees.value.length}`)
                 return employees.value;
@@ -77,15 +76,23 @@ const useEmployeeStore = defineStore('employeeStore', () => {
         try {
             await axios.delete(url);
             console.log(`Attempting to delete employee with - id: ${id} - on backend`);
+            return true;
 
         } catch (error) {
             console.log(`Error deleting employee: ${error}`);
+            return false;
         }
     }
 
     const addEmployee = (newEmployee: EmployeeType) => {
         const url = "http://localhost:3000/employees/";
-        axios.post(url, newEmployee)
+        try {
+            axios.post(url, newEmployee);
+            return true;
+        } catch (error) {
+            console.log(`Error adding employee: ${error}`);
+            return false;
+        }
     }
 
     const updateEmployee = (newData: EmployeeType) => {
